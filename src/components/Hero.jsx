@@ -48,13 +48,6 @@ const Hero = () => {
             {/* Content */}
             <div ref={contentRef} className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center">
 
-                {/* News Pill */}
-                <a href="#new" className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-white/40 shadow-sm mb-8 hover:scale-105 transition-transform cursor-pointer group">
-                    <span className="w-2 h-2 rounded-full bg-luxury-gold animate-pulse"></span>
-                    <span className="text-xs font-semibold text-luxury-black tracking-wide uppercase">New Collection</span>
-                    <span className="text-xs text-gray-500 group-hover:text-luxury-black transition-colors">Spring 2026 available now &rarr;</span>
-                </a>
-
                 {/* Main Heading */}
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-luxury-black tracking-tight leading-[0.9] mb-8">
                     Fine Jewelry,<br />
@@ -68,17 +61,22 @@ const Hero = () => {
                 </p>
 
                 {/* CTAs */}
-                <div className="flex flex-col md:flex-row items-center gap-4">
-                    <button className="px-8 py-4 rounded-full bg-luxury-black text-white font-medium text-lg hover:bg-gray-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                        Start Manufacturing
-                    </button>
-                    <button className="px-8 py-4 rounded-full bg-white/50 backdrop-blur-sm border border-white/60 text-luxury-black font-medium text-lg hover:bg-white transition-all">
+                <div className="flex items-center justify-center">
+                    <button
+                        className="px-8 py-4 rounded-full bg-black/20 backdrop-blur-sm border border-white/60 text-luxury-black font-medium text-lg hover:bg-white transition-all"
+                        onClick={() =>
+                            window.open(
+                                "https://catalog.carpediam.in/",
+                                "_blank"
+                            )
+                        }
+                    >
                         View Catalogue
                     </button>
                 </div>
             </div>
 
-        </section>
+        </section >
     );
 };
 

@@ -6,6 +6,7 @@ import React from 'react';
 const ServiceSlide = ({ data, isActive }) => {
     return (
         <article
+            id={data.id || ""}
             className={`absolute inset-0 pb-[90px] lg:pb-[150px] flex flex-col justify-end transition-opacity duration-1000 h-full w-full px-[clamp(1rem,4vw,2.5rem)] ${isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                 }`}
         >
