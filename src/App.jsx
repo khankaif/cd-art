@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import OurStoryPage from './pages/OurStoryPage';
+import BespokePage from './pages/BespokePage';
 
 //Before using ScrollTrigger, GSAP must know that plugin exists.So we register it.
 gsap.registerPlugin(ScrollTrigger);
@@ -75,6 +76,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/our-story" element={<OurStoryPage />} />
+          <Route path="/bespoke" element={<BespokePage />} />
         </Routes>
       </main>
 
