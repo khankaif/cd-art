@@ -34,7 +34,7 @@ const LogoTicker = () => {
     }, []);
 
     return (
-        <section className="py-20 bg-white overflow-hidden">
+        <section className="py-20 bg-white overflow-hidden relative">
             <div className="container mx-auto px-6 mb-12 text-center">
                 <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">Trusted by Industry Leaders</p>
             </div>
