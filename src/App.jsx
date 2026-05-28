@@ -9,6 +9,8 @@ import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import OurStoryPage from './pages/OurStoryPage';
 import BespokePage from './pages/BespokePage';
+import PrecisionManufacturingPage from './pages/PrecisionManufacturingPage';
+import IntegratedDigitalEcosystemsPage from './pages/IntegratedDigitalEcosystemsPage';
 
 //Before using ScrollTrigger, GSAP must know that plugin exists.So we register it.
 gsap.registerPlugin(ScrollTrigger);
@@ -77,6 +79,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/our-story" element={<OurStoryPage />} />
           <Route path="/bespoke" element={<BespokePage />} />
+          <Route path="/precision-manufacturing" element={<PrecisionManufacturingPage />} />
+          <Route path="/digital-ecosystems" element={<IntegratedDigitalEcosystemsPage />} />
         </Routes>
       </main>
 

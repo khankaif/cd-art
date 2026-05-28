@@ -225,6 +225,7 @@ const ServiceSlide = ({ data, index }) => {
                         <div className="slide-cta mt-4">
                             <button
                                 ref={btnRef}
+                                onClick={() => navigate('/precision-manufacturing')}
                                 className="px-6 py-3 rounded-full bg-transparent text-luxury-black border border-luxury-black/35 font-medium text-xs tracking-[0.2em] uppercase transition-all select-none cursor-pointer"
                             >
                                 Explore
@@ -260,6 +261,7 @@ const ServiceSlide = ({ data, index }) => {
                         <div className="slide-cta mt-4">
                             <button
                                 ref={btnRef}
+                                onClick={() => navigate('/digital-ecosystems')}
                                 className="px-6 py-3 rounded-full bg-transparent text-luxury-black border border-luxury-black/35 font-medium text-xs tracking-[0.2em] uppercase transition-all select-none cursor-pointer"
                             >
                                 Explore
