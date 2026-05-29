@@ -11,6 +11,10 @@ import OurStoryPage from './pages/OurStoryPage';
 import BespokePage from './pages/BespokePage';
 import PrecisionManufacturingPage from './pages/PrecisionManufacturingPage';
 import IntegratedDigitalEcosystemsPage from './pages/IntegratedDigitalEcosystemsPage';
+import { AnimatePresence } from 'framer-motion';
+import HamburgerButton from './components/HamburgerButton';
+import SidebarOverlay from './components/SidebarOverlay';
+import SidebarMenu from './components/SidebarMenu';
 
 //Before using ScrollTrigger, GSAP must know that plugin exists.So we register it.
 gsap.registerPlugin(ScrollTrigger);
@@ -40,6 +44,7 @@ function App() {
   const [activeOffice, setActiveOffice] = useState('europe');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
@@ -73,6 +78,17 @@ function App() {
 
       <Navbar />
 
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <React.Fragment key="sidebar-wrapper">
+            <SidebarOverlay onClose={() => setIsSidebarOpen(false)} />
+            <SidebarMenu onClose={() => setIsSidebarOpen(false)} />
+          </React.Fragment>
+        )}
+      </AnimatePresence>
+
+      <HamburgerButton isOpen={isSidebarOpen} onClick={() => setIsSidebarOpen(true)} />
+
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -81,6 +97,7 @@ function App() {
           <Route path="/bespoke" element={<BespokePage />} />
           <Route path="/precision-manufacturing" element={<PrecisionManufacturingPage />} />
           <Route path="/digital-ecosystems" element={<IntegratedDigitalEcosystemsPage />} />
+          <Route path="/integrated-digital-ecosystems" element={<IntegratedDigitalEcosystemsPage />} />
         </Routes>
       </main>
 

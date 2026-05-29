@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,6 +6,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutGallery = () => {
     const galleryRef = useRef(null);
+    const [flippedCards, setFlippedCards] = useState({});
+
+    const toggleFlip = (index) => {
+        setFlippedCards(prev => ({
+            ...prev,
+            [index]: !prev[index]
+        }));
+    };
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -35,28 +43,32 @@ const AboutGallery = () => {
             alt: "Jewelry CAD Sketching & Rendering",
             aspect: "aspect-[4/5] md:aspect-square",
             title: "CAD Modeling",
-            tag: "Engineering"
+            tag: "Engineering",
+            description: "Every piece begins as a precise digital blueprint. Advanced CAD modeling allows our designers to refine proportions, structural integrity, and intricate details before production begins."
         },
         {
             src: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=2574&auto=format&fit=crop",
             alt: "Artisan Goldsmith Benchwork",
             aspect: "aspect-[4/5]",
             title: "Metalsmithing",
-            tag: "Craftsmanship"
+            tag: "Craftsmanship",
+            description: "Traditional bench skills meet modern manufacturing. Expert artisans shape, assemble, and refine each component to ensure exceptional quality and durability."
         },
         {
             src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=2670&auto=format&fit=crop",
             alt: "Microscope Gemstone Setting",
             aspect: "aspect-[4/5] md:aspect-[3/4]",
             title: "Micro-Setting",
-            tag: "Precision"
+            tag: "Precision",
+            description: "Microscopic stone-setting techniques ensure perfect alignment, security, and brilliance. Every gemstone is positioned with exceptional accuracy."
         },
         {
             src: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=2070&auto=format&fit=crop",
             alt: "Finished Bespoke Luxury Ring",
             aspect: "aspect-square md:aspect-[4/5]",
             title: "Polishing & Finish",
-            tag: "Artistry"
+            tag: "Artistry",
+            description: "The final stage where craftsmanship comes to life. Multiple finishing processes create flawless surfaces, enhanced reflections, and a luxury-grade presentation."
         }
     ];
 
@@ -82,17 +94,56 @@ const AboutGallery = () => {
                     {galleryImages.map((img, i) => (
                         <div
                             key={i}
-                            className={`gallery-item group relative overflow-hidden rounded-[2rem] shadow-md hover:shadow-xl transition-all duration-500 ${img.aspect}`}
+                            className={`gallery-item perspective-1000 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-luxury-gold focus-visible:ring-offset-2 rounded-[2rem] ${img.aspect}`}
+                            onClick={() => toggleFlip(i)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    toggleFlip(i);
+                                }
+                            }}
+                            role="button"
+                            tabIndex={0}
+                            aria-expanded={!!flippedCards[i]}
+                            aria-label={`${img.title} - ${img.tag}. Click to view details.`}
                         >
-                            <img
-                                src={img.src}
-                                alt={img.alt}
-                                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
-                            />
-                            {/* Overlay Content */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                                <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold mb-2">{img.tag}</span>
-                                <h4 className="text-xl font-serif text-white font-medium">{img.title}</h4>
+                            <div
+                                className={`w-full h-full relative preserve-3d transition-transform duration-700 ease-in-out ${
+                                    flippedCards[i] ? 'rotate-y-180' : ''
+                                }`}
+                            >
+                                {/* Front Side */}
+                                <div className="absolute inset-0 w-full h-full rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden group">
+                                    <img
+                                        src={img.src}
+                                        alt={img.alt}
+                                        className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                                    />
+                                    {/* Overlay Content */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                                        <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold mb-2">{img.tag}</span>
+                                        <h4 className="text-xl font-serif text-white font-medium">{img.title}</h4>
+                                    </div>
+                                </div>
+
+                                {/* Back Side */}
+                                <div className="absolute inset-0 w-full h-full rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden rotate-y-180 bg-luxury-white border border-luxury-sand flex flex-col justify-center items-center p-8 text-center">
+                                    {/* Decorative subtle gold accent tag */}
+                                    <span className="text-[10px] font-bold uppercase tracking-widest text-luxury-gold/80 mb-2">
+                                        {img.tag}
+                                    </span>
+                                    
+                                    <h4 className="text-2xl font-serif text-luxury-black font-semibold">
+                                        {img.title}
+                                    </h4>
+                                    
+                                    {/* Divider line */}
+                                    <div className="w-12 h-[1px] bg-luxury-gold my-4" />
+                                    
+                                    <p className="text-sm font-light text-gray-600 leading-relaxed max-w-[90%]">
+                                        {img.description}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     ))}

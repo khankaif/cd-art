@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 const LogoTicker = () => {
-    const tickerRef = useRef(null);
     const trackRef = useRef(null);
 
     const brands = [
@@ -10,22 +9,20 @@ const LogoTicker = () => {
         "Harry Winston", "Chopard", "Graff", "David Yurman", "Buccellati"
     ];
 
+    const duplicatedBrands = [...brands, ...brands];
+
     useEffect(() => {
         const track = trackRef.current;
-        const totalWidth = track.scrollWidth;
-
-        // Duplicate content for seamless loop
-        const clone = track.innerHTML;
-        track.innerHTML += clone;
+        if (!track) return;
+        
+        // Single transition width (half of the duplicated list width)
+        const halfWidth = track.scrollWidth / 2;
 
         const animation = gsap.to(track, {
-            x: "-50%",
-            duration: 20,
+            x: -halfWidth,
+            duration: 25,
             ease: "none",
-            repeat: -1,
-            modifiers: {
-                x: gsap.utils.unitize(x => parseFloat(x) % totalWidth) // Ensures smooth loop
-            }
+            repeat: -1
         });
 
         return () => {
@@ -38,19 +35,15 @@ const LogoTicker = () => {
             <div className="container mx-auto px-6 mb-12 text-center">
                 <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">Trusted by Industry Leaders</p>
             </div>
-            <div ref={tickerRef} className="relative w-full overflow-hidden mask-linear-fade">
+            <div className="relative w-full overflow-hidden">
                 <div ref={trackRef} className="flex whitespace-nowrap gap-16 md:gap-32 min-w-max px-16 md:px-32">
-                    {brands.map((brand, index) => (
-                        <div key={index} className="flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default">
+                    {duplicatedBrands.map((brand, index) => (
+                        <div key={index} className="flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity duration-300 cursor-default">
                             <span className="text-2xl md:text-3xl font-serif text-luxury-black">{brand}</span>
                         </div>
                     ))}
                 </div>
             </div>
-
-            {/* Fade masks */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
         </section>
     );
 };

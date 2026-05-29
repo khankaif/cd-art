@@ -39,12 +39,14 @@ const AboutCTA = () => {
                     Partner with Mumbai's premier casting and manufacturing lab. Let us build your high-end collections on demand.
                 </p>
                 <div className="cta-animate pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-luxury-black text-white font-medium text-lg hover:bg-gray-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5">
-                        Start Manufacturing
-                    </button>
-                    <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-gray-200 text-luxury-black font-medium text-lg hover:bg-gray-50 transition-all">
-                        View Catalog
-                    </button>
+                    <a
+                        href="https://catalog.carpediam.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-gray-200 text-luxury-black font-medium text-lg hover:bg-gray-50 transition-all text-center"
+                    >
+                        View Catalogue
+                    </a>
                 </div>
             </div>
         </div>

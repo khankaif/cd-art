@@ -23,7 +23,6 @@ import DigitalDataVisual from './DigitalDataVisual';
 import DigitalCraftsmanship from './DigitalCraftsmanship';
 import DigitalAdvantages from './DigitalAdvantages';
 import DigitalCTA from './DigitalCTA';
-import DigitalContact from './DigitalContact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -301,7 +300,6 @@ const IntegratedDigitalEcosystemsPage = () => {
             <DigitalCraftsmanship />
             <DigitalAdvantages advantages={advantages} />
             <DigitalCTA parallaxBgRef={parallaxBgRef} />
-            <DigitalContact />
         </div>
     );
 };

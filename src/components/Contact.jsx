@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import contactTexture from '../assets/contact-texture.png';
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,12 +44,12 @@ const Contact = () => {
                     Join our network of forward-thinking retailers.
                 </p>
 
-                <a
-                    href="mailto:hello@cd.com"
+                <Link
+                    to="/contact"
                     className="inline-block px-10 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium hover:bg-white hover:text-luxury-black transition-all duration-300 shadow-xl hover:shadow-white/10 hover:-translate-y-1"
                 >
                     Get In Touch
-                </a>
+                </Link>
             </div>
         </section>
     );

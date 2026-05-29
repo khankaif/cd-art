@@ -14,8 +14,6 @@ import BespokeEditorial from './BespokeEditorial';
 import BespokeGallery from './BespokeGallery';
 import BespokePhilosophy from './BespokePhilosophy';
 import BespokeTimeline from './BespokeTimeline';
-import BespokeCTA from './BespokeCTA';
-import BespokeConsultation from './BespokeConsultation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -235,12 +233,7 @@ const BespokePage = () => {
             <BespokeTimeline 
                 timelineSteps={timelineSteps} 
             />
-            <BespokeCTA 
-                scrollToSection={scrollToSection} 
-            />
-            <BespokeConsultation 
-                handleFormSubmit={handleFormSubmit} 
-            />
+
         </div>
     );
 };

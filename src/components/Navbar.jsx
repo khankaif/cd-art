@@ -8,7 +8,6 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Setup initial state and animate opacity smoothly without layout transforms
         gsap.set(navRef.current, {
             opacity: 0
         });
@@ -21,113 +20,77 @@ const Navbar = () => {
         });
     }, []);
 
-    const handleNavClick = (e, item) => {
+    const handleLogoClick = (e) => {
         e.preventDefault();
 
-        if (item.external) {
-            window.open(item.link, '_blank');
-            return;
-        }
-        if (item.name === 'Tech') {
-            if (location.pathname !== '/') {
-                navigate('/', { state: { scrollTo: 'tech' } });
-            } else {
-                const servicesSection = document.getElementById('services');
-                if (servicesSection) {
-                    const sectionTop = servicesSection.offsetTop;
-                    window.scrollTo({
-                        top: sectionTop + (window.innerHeight * 4),
-                        behavior: 'smooth'
-                    });
-                }
-            }
-            return;
-        }
-
-        if (item.link.startsWith('#')) {
-            const targetId = item.link.substring(1);
-            if (location.pathname !== '/') {
-                navigate('/', { state: { scrollTo: targetId } });
-            } else {
-                const element = document.getElementById(targetId);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
+        if (location.pathname === '/') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            navigate('/');
         }
     };
 
+    const handleNavClick = (e, link, external) => {
+        e.preventDefault();
+        if (external) {
+            window.open(link, '_blank');
+        } else {
+            navigate(link);
+        }
+    };
+
+    const linkBaseClass = "px-2.5 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-[11px] tracking-[0.25em] uppercase transition-all duration-300";
+    const activeClass = "text-luxury-black font-bold bg-luxury-black/8";
+    const inactiveClass = "text-[#1F1F1F] font-medium hover:text-luxury-black hover:bg-luxury-black/[0.03]";
+
     return (
-        <div className="fixed top-2 left-0 w-full z-50 px-2 sm:px-6 flex justify-center pointer-events-none">
+        <div className="fixed top-4 left-0 w-full z-50 px-4 sm:px-8 flex justify-center pointer-events-none">
             <nav
                 ref={navRef}
-                className="pointer-events-auto flex items-center justify-between px-1.5 py-1.5 sm:px-4 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-xl border border-white/20 shadow-sm w-full max-w-4xl transition-shadow duration-300 hover:shadow-md"
+                className="pointer-events-auto grid grid-cols-[1fr_auto_1fr] items-center px-6 sm:px-8 py-2.5 rounded-full bg-white/45 backdrop-blur-md border border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.02)] w-full max-w-3xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:bg-white/55"
             >
-                {/* Logo Section */}
-                <div className="flex items-center pl-1 sm:pl-4 flex-none md:flex-1">
+                {/* Logo Section (Left-aligned) */}
+                <div className="flex justify-start">
                     <a
                         href="/"
-                        className="text-base sm:text-xl font-serif font-bold text-luxury-black tracking-tight"
+                        onClick={handleLogoClick}
+                        className="text-base sm:text-lg font-serif font-bold text-luxury-black tracking-[0.1em] hover:opacity-75 transition-opacity duration-300"
                     >
                         CD.
                     </a>
                 </div>
 
-                {/* Navigation Links (Visible always, compact & responsive) */}
-                <div className="flex items-center gap-0.5 sm:gap-1 bg-gray-100/50 rounded-full px-1 py-1 sm:px-2 sm:py-1.5 border border-white/50">
-                    {[
-                        { name: 'Services', link: '#services-anchor' },
-                        {
-                            name: 'Catalogue',
-                            link: 'https://catalog.carpediam.in/',
-                            external: true
-                        },
-                        { name: 'Tech', link: '#' },
-                        { name: 'About', link: '#about' }
-                    ].map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.link}
-                            onClick={(e) => handleNavClick(e, item)}
-                            className="px-2 py-1 sm:px-4 sm:py-1.5 rounded-full text-[9px] sm:text-xs md:text-sm font-medium text-gray-600 hover:bg-white hover:text-luxury-black hover:shadow-sm transition-colors duration-200"
-                        >
-                            {item.name}
-                        </a>
-                    ))}
-                </div>
-
-                {/* Right Side: Spacer for desktop, buttons for mobile/tablet */}
-                {/* Spacer on Desktop (>= 1280px / xl) */}
-                <div className="hidden xl:flex xl:flex-1 justify-end pr-4 pointer-events-none select-none">
-                    <span className="opacity-0 text-xl font-serif font-bold tracking-tight">CD.</span>
-                </div>
-
-                {/* Buttons on Mobile/Tablet (< 1280px / xl) */}
-                <div className="flex xl:hidden flex-none items-center gap-1 sm:gap-2 pr-1">
+                {/* Navigation Links (Perfectly Centered) */}
+                <div className="flex items-center gap-1 sm:gap-2 justify-center">
+                    <a
+                        href="https://catalog.carpediam.in/"
+                        onClick={(e) => handleNavClick(e, 'https://catalog.carpediam.in/', true)}
+                        className={`${linkBaseClass} ${inactiveClass}`}
+                    >
+                        Catalogue
+                    </a>
                     <a
                         href="/our-story"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            navigate('/our-story');
-                        }}
-                        className="px-2 py-1 rounded-full text-[9px] sm:text-xs font-medium text-gray-600 hover:bg-white hover:text-luxury-black transition-colors"
+                        onClick={(e) => handleNavClick(e, '/our-story', false)}
+                        className={`${linkBaseClass} ${location.pathname === '/our-story' ? activeClass : inactiveClass}`}
                     >
                         Our Story
                     </a>
                     <a
                         href="/contact"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if (location.pathname === '/contact') {
-                                document.getElementById('contact-form-section')?.scrollIntoView({ behavior: 'smooth' });
-                            } else {
-                                navigate('/contact');
-                            }
-                        }}
-                        className="px-2 py-1 rounded-full bg-black text-white text-[9px] sm:text-xs font-medium hover:bg-gray-800 transition-colors shadow-sm"
+                        onClick={(e) => handleNavClick(e, '/contact', false)}
+                        className={`${linkBaseClass} ${location.pathname === '/contact' ? activeClass : inactiveClass}`}
                     >
                         Contact
                     </a>
+                </div>
+
+                {/* Right Placeholder (Right-aligned to balance the layout) */}
+                <div className="flex justify-end pointer-events-none">
+                    {/* Empty placeholder balancing column 1 to keep links mathematically centered */}
                 </div>
             </nav>
         </div>

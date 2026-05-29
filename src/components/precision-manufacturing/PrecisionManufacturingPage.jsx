@@ -26,7 +26,6 @@ import PrecisionTimeline from './PrecisionTimeline';
 import PrecisionGallery from './PrecisionGallery';
 import PrecisionWhyChoose from './PrecisionWhyChoose';
 import PrecisionCTA from './PrecisionCTA';
-import PrecisionContact from './PrecisionContact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -320,7 +319,6 @@ const PrecisionManufacturingPage = () => {
             <PrecisionTimeline timelineSteps={timelineSteps} />
             <PrecisionGallery galleryItems={galleryItems} />
             <PrecisionWhyChoose advantages={advantages} />
-            <PrecisionContact />
         </div>
     );
 };

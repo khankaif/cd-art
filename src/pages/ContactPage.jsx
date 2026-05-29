@@ -98,7 +98,7 @@ const ContactPage = () => {
 
             {/* Contact Card Section */}
             <section id="contact-form-section" ref={formSectionRef} className="relative z-10 px-6 pb-32">
-                <div className="max-w-5xl mx-auto bg-[#f5f2eb] text-luxury-black rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-white/10 flex flex-col gap-12 lg:gap-16">
+                <div className="max-w-5xl mx-auto bg-luxury-champagne/95 backdrop-blur-md text-luxury-black rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-white/40 flex flex-col gap-12 lg:gap-16">
 
                     {/* Upper: Grid of Form + Side Image */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
@@ -108,7 +108,7 @@ const ContactPage = () => {
                             <div className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Name */}
-                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-black transition-colors duration-250 py-2">
+                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-gold transition-colors duration-300 py-2">
                                         <label className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Name</label>
                                         <input
                                             type="text"
@@ -118,7 +118,7 @@ const ContactPage = () => {
                                         />
                                     </div>
                                     {/* Email Address */}
-                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-black transition-colors duration-250 py-2">
+                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-gold transition-colors duration-300 py-2">
                                         <label className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Email Address</label>
                                         <input
                                             type="email"
@@ -131,7 +131,7 @@ const ContactPage = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Company Name */}
-                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-black transition-colors duration-250 py-2">
+                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-gold transition-colors duration-300 py-2">
                                         <label className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Company Name</label>
                                         <input
                                             type="text"
@@ -141,10 +141,10 @@ const ContactPage = () => {
                                         />
                                     </div>
                                     {/* Service Required */}
-                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-black transition-colors duration-250 py-2">
+                                    <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-gold transition-colors duration-300 py-2 relative">
                                         <label className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Service Required</label>
                                         <select
-                                            className="bg-transparent border-none text-sm text-luxury-black focus:outline-none font-light py-1 appearance-none cursor-pointer"
+                                            className="bg-transparent border-none text-sm text-luxury-black focus:outline-none font-light py-1 appearance-none cursor-pointer pr-8 w-full"
                                             required
                                             defaultValue=""
                                         >
@@ -154,11 +154,16 @@ const ContactPage = () => {
                                             <option value="automated-fulfillment">Automated Fulfillment API</option>
                                             <option value="other">Other Inquiry</option>
                                         </select>
+                                        <div className="pointer-events-none absolute bottom-3 right-2 flex items-center text-gray-500">
+                                            <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
 
                                 {/* Message */}
-                                <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-black transition-colors duration-250 py-2">
+                                <div className="flex flex-col border-b border-gray-300 focus-within:border-luxury-gold transition-colors duration-300 py-2">
                                     <label className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Message</label>
                                     <textarea
                                         rows="3"

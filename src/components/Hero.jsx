@@ -146,9 +146,8 @@ const Hero = () => {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen min-h-[650px] w-full overflow-hidden bg-[#e4dfd5] border-b border-gray-200/50 flex items-center"
+            className="relative min-h-[100svh] w-full overflow-hidden bg-[#e4dfd5] border-b border-gray-200/50 flex flex-col justify-center items-center pt-28 pb-24"
         >
-            {/* Background Image & Editorial overlays */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div
                     ref={bgRef}
@@ -157,26 +156,13 @@ const Hero = () => {
                         backgroundImage: `url(${luxuryBg})`
                     }}
                 ></div>
-
-                {/* Ambient champagne fog overlay */}
-                <div className="absolute inset-0 bg-[#e4dfd5]/35 backdrop-blur-[0.5px] pointer-events-none"></div>
-
-                {/* Heavy left gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#e4dfd5] via-[#e4dfd5]/95 via-[#e4dfd5]/75 to-transparent w-full md:w-[70%] lg:w-[60%] pointer-events-none"></div>
-
-                {/* Custom radial vignette overlay framing all sides to the fog color */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_50%,transparent_25%,#e4dfd5_90%)] pointer-events-none"></div>
-
-                {/* Soft top gradient to prevent navbar overlap/hard line */}
-                <div className="absolute top-0 left-0 w-full h-36 bg-gradient-to-b from-[#e4dfd5]/80 via-[#e4dfd5]/30 to-transparent pointer-events-none"></div>
-
-                {/* Canvas noise texture overlay */}
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.012)_1px,transparent_1px)] [background-size:20px_20px] opacity-40 mix-blend-multiply pointer-events-none"></div>
+                {/* Subtle overlay to preserve dark text readability */}
+                <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
             </div>
 
             {/* Hero Content */}
-            <div className="relative z-10 w-full min-h-screen flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto pt-36 pb-32">
-                <div className="max-w-2xl text-left flex flex-col items-start">
+            <div className="relative z-10 w-full flex flex-col items-center px-6 sm:px-12 lg:px-20 max-w-5xl mx-auto text-center">
+                <div className="max-w-4xl text-center flex flex-col items-center">
                     {/* Eyebrow */}
                     <span className="hero-eyebrow text-[10px] sm:text-xs uppercase tracking-[0.45em] text-[#9e8060] font-semibold mb-6 block">
                         CD. FINE ARTISTRY
@@ -190,14 +176,14 @@ const Hero = () => {
                             </span>
                         </div>
                         <div className="overflow-hidden py-1">
-                            <span className="italic font-light text-luxury-black/35 block hero-title-line">
+                            <span className="italic font-light text-luxury-black/65 block hero-title-line">
                                 Simplified.
                             </span>
                         </div>
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="hero-subtitle text-xs sm:text-sm md:text-base text-[#615e58] font-light max-w-md sm:max-w-lg leading-relaxed tracking-wide mb-10">
+                    <p className="hero-subtitle text-xs sm:text-sm md:text-base text-luxury-black/85 font-normal max-w-md sm:max-w-lg leading-relaxed tracking-wide mb-10">
                         The digital infrastructure for modern jewelry brands.
                         <br className="hidden sm:block" />
                         From design to delivery, we power your growth.
@@ -218,23 +204,23 @@ const Hero = () => {
                             View Catalogue
                         </button>
                     </div>
-                </div>
-            </div>
 
-            {/* Scroll Indicator */}
-            <div
-                className="hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer pointer-events-auto group"
-                onClick={handleScrollDown}
-            >
-                <span className="text-[9px] tracking-[0.45em] uppercase text-luxury-black/40 mb-3 font-semibold group-hover:text-luxury-black transition-colors duration-300">
-                    Explore
-                </span>
-
-                <div className="w-[1px] h-10 bg-luxury-black/10 relative overflow-hidden">
+                    {/* Scroll Indicator */}
                     <div
-                        ref={indicatorRef}
-                        className="absolute top-0 left-0 w-full h-1/2 bg-luxury-black"
-                    ></div>
+                        className="hero-scroll-indicator flex flex-col items-center cursor-pointer pointer-events-auto group px-6 py-3 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 mt-12"
+                        onClick={handleScrollDown}
+                    >
+                        <span className="text-[14px] tracking-[0.4em] uppercase text-black font-black mb-2.5 transition-colors duration-300">
+                            Explore
+                        </span>
+
+                        <div className="w-[1.5px] h-8 bg-red-700 relative overflow-hidden rounded-full">
+                            <div
+                                ref={indicatorRef}
+                                className="absolute top-0 left-0 w-full h-1/2 bg-luxury-gold"
+                            ></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
