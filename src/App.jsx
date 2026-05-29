@@ -195,7 +195,7 @@ function App() {
 
             <div className="flex flex-wrap justify-center gap-6 md:gap-8 items-center text-xs text-gray-400 font-light uppercase tracking-widest">
               <a href="tel:+918850157354" className="hover:text-luxury-black transition-colors duration-300">
-                +91 88501 57354
+                +91 88501 57364
               </a>
               <span className="hidden md:inline text-gray-200">|</span>
               <a href="mailto:hello@carpediam.in" className="hover:text-luxury-black transition-colors duration-300 lowercase">
