@@ -145,7 +145,7 @@ const ServiceSlide = ({ data, index }) => {
             <section
                 ref={slideRef}
                 id={`service-slide-${index}`}
-                className="relative h-screen w-full flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-12 lg:px-20 overflow-hidden bg-[#0a0a0a]"
+                className="relative min-h-[85svh] md:min-h-[100svh] w-full flex flex-col justify-end pb-16 md:pb-32 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden bg-[#0a0a0a]"
             >
                 {/* Background Media Container */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -196,9 +196,9 @@ const ServiceSlide = ({ data, index }) => {
             <section
                 ref={slideRef}
                 id={`service-slide-${index}`}
-                className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#faf9f6] py-24 md:py-32 px-6 md:px-12 lg:px-20"
+                className="relative min-h-[85svh] md:min-h-[100svh] w-full flex flex-col justify-center items-center overflow-hidden bg-[#faf9f6] py-16 md:py-32 px-4 sm:px-6 md:px-12 lg:px-20"
             >
-                <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
                     {/* Left Column - Large Image */}
                     <div className="lg:col-span-7 w-full overflow-hidden aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/11] rounded-[1rem] shadow-sm relative bg-[#faf9f6]">
                         <img
@@ -242,9 +242,9 @@ const ServiceSlide = ({ data, index }) => {
             <section
                 ref={slideRef}
                 id={`service-slide-${index}`}
-                className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#f5f5f2] py-24 md:py-32 px-6 md:px-12 lg:px-20"
+                className="relative min-h-[85svh] md:min-h-[100svh] w-full flex flex-col justify-center items-center overflow-hidden bg-[#f5f5f2] py-16 md:py-32 px-4 sm:px-6 md:px-12 lg:px-20"
             >
-                <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
                     {/* Left Column - Text Content (Stacks below image on mobile/tablet) */}
                     <div className="order-last lg:order-first lg:col-span-5 flex flex-col gap-3 md:gap-4 text-left">
                         <span className="slide-label text-[10px] sm:text-xs uppercase tracking-[0.35em] text-luxury-black/50 font-medium block">

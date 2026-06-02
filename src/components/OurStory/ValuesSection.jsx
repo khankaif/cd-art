@@ -20,9 +20,9 @@ const ValuesSection = () => {
     ];
 
     return (
-        <section className="py-24 md:py-36 bg-[#FAF9F6] border-t border-gray-100/50 overflow-hidden">
-            <div className="container mx-auto px-6 max-w-6xl">
-                <div className="text-center max-w-2xl mx-auto mb-24">
+        <section className="py-16 md:py-36 bg-[#FAF9F6] border-t border-gray-100/50 overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+                <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
                     <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold inline-block mb-4">
                         Values & Practice
                     </span>
@@ -31,7 +31,7 @@ const ValuesSection = () => {
                     </h2>
                 </div>
 
-                <div className="space-y-16 md:space-y-24">
+                <div className="space-y-12 md:space-y-24">
                     {values.map((val, idx) => (
                         <div 
                             key={idx} 

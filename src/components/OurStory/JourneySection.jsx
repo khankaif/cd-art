@@ -2,9 +2,9 @@ import React from 'react';
 
 const JourneySection = () => {
     return (
-        <section className="py-24 md:py-36 bg-[#FAF9F6] border-t border-gray-100/50 overflow-hidden">
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+        <section className="py-16 md:py-36 bg-[#FAF9F6] border-t border-gray-100/50 overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-center">
                     
                     {/* Large Image Left */}
                     <div className="lg:col-span-5 order-2 lg:order-1 journey-animate">
@@ -19,8 +19,8 @@ const JourneySection = () => {
                     </div>
 
                     {/* Content Right */}
-                    <div className="lg:col-span-7 order-1 lg:order-2 space-y-8 text-left journey-animate">
-                        <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold">
+                    <div className="lg:col-span-7 order-1 lg:order-2 space-y-6 md:space-y-8 text-left journey-animate">
+                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-luxury-gold">
                             Our Evolution
                         </span>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-luxury-black leading-tight">
@@ -34,17 +34,17 @@ const JourneySection = () => {
                         </p>
 
                         {/* Stats Counter Section */}
-                        <div className="pt-6 grid grid-cols-3 gap-6 border-t border-gray-200">
+                        <div className="pt-6 grid grid-cols-3 gap-4 sm:gap-6 border-t border-gray-200">
                             <div>
-                                <h4 className="stat-num text-3xl sm:text-4xl font-serif font-bold text-luxury-gold" data-target="2021">2021</h4>
+                                <h4 className="stat-num text-2xl sm:text-4xl font-serif font-bold text-luxury-gold" data-target="2021">2021</h4>
                                 <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Established</p>
                             </div>
                             <div>
-                                <h4 className="stat-num text-3xl sm:text-4xl font-serif font-bold text-luxury-gold" data-target="15000">15000+</h4>
+                                <h4 className="stat-num text-2xl sm:text-4xl font-serif font-bold text-luxury-gold" data-target="15000">15000+</h4>
                                 <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">CAD Models</p>
                             </div>
                             <div>
-                                <h4 className="stat-num text-3xl sm:text-4xl font-serif font-bold text-luxury-gold" data-target="25">25+</h4>
+                                <h4 className="stat-num text-2xl sm:text-4xl font-serif font-bold text-luxury-gold" data-target="25">25+</h4>
                                 <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Retail Partners</p>
                             </div>
                         </div>

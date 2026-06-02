@@ -2,13 +2,13 @@ import React from 'react';
 
 const IntroductionSection = () => {
     return (
-        <section id="intro-section" className="py-24 md:py-36 bg-white overflow-hidden">
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+        <section id="intro-section" className="py-16 md:py-36 bg-white overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-24 items-center">
                     
                     {/* Narrative Left */}
-                    <div className="lg:col-span-6 space-y-8 text-left intro-animate">
-                        <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold">
+                    <div className="lg:col-span-6 space-y-6 md:space-y-8 text-left intro-animate">
+                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-luxury-gold">
                             Who We Are
                         </span>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-luxury-black leading-tight">

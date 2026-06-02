@@ -30,9 +30,9 @@ const TimelineSection = () => {
     ];
 
     return (
-        <section className="py-24 md:py-36 bg-white overflow-hidden">
-            <div className="container mx-auto px-6 max-w-5xl">
-                <div className="text-center max-w-2xl mx-auto mb-24">
+        <section className="py-16 md:py-36 bg-white overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+                <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
                     <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold inline-block mb-4">
                         Milestones
                     </span>
@@ -42,7 +42,7 @@ const TimelineSection = () => {
                 </div>
 
                 {/* Timeline Line */}
-                <div className="relative border-l border-gray-200/80 ml-4 md:ml-0 md:left-1/2 md:-translate-x-1/2 space-y-16">
+                <div className="relative border-l border-gray-200/80 ml-4 md:ml-0 md:left-1/2 md:-translate-x-1/2 space-y-12 md:space-y-16">
                     {milestones.map((milestone, idx) => (
                         <div 
                             key={idx} 

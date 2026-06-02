@@ -2,14 +2,14 @@ import React from 'react';
 
 const BespokeGallery = ({ galleryItems }) => {
     return (
-        <section className="py-24 md:py-36 bg-white border-b border-gray-100">
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className="text-center md:text-left md:flex justify-between items-end mb-20 space-y-4 md:space-y-0">
+        <section className="py-16 md:py-36 bg-white border-b border-gray-100">
+            <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+                <div className="text-center md:text-left md:flex justify-between items-end mb-12 md:mb-20 space-y-3 md:space-y-0">
                     <div>
-                        <span className="inline-block px-3 py-1 rounded-full bg-luxury-gold/10 text-luxury-gold text-xs font-bold uppercase tracking-widest mb-6">
+                        <span className="inline-block px-3 py-1 rounded-full bg-luxury-gold/10 text-luxury-gold text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
                             Bespoke Gallery
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-luxury-black">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-luxury-black">
                             Handcrafted Legacies.
                         </h2>
                     </div>

@@ -102,13 +102,13 @@ const SidebarMenu = ({ onClose }) => {
     }
   };
 
-  return (
+    return (
     <motion.div
       variants={sidebarVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="fixed top-0 left-0 h-screen w-full max-w-[380px] sm:w-[380px] z-50 bg-[#0A0A0A]/95 backdrop-blur-2xl border-r border-white/5 flex flex-col justify-between p-8 sm:p-12 md:pl-12 text-white overflow-y-auto select-none pointer-events-auto"
+      className="fixed top-0 left-0 h-[100dvh] w-full max-w-[380px] z-50 bg-[#0A0A0A]/95 backdrop-blur-2xl border-r border-white/5 flex flex-col justify-between p-6 sm:p-8 md:p-12 text-white overflow-y-auto select-none pointer-events-auto"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Subtle radial glow for premium luxury feel */}
@@ -140,7 +140,7 @@ const SidebarMenu = ({ onClose }) => {
       {/* Navigation menu list */}
       <motion.nav 
         variants={listVariants}
-        className="relative z-10 flex flex-col gap-6 sm:gap-8 my-auto pt-8 pb-12"
+        className="relative z-10 flex flex-col gap-4 sm:gap-6 md:gap-8 my-auto pt-6 pb-8"
       >
         {menuItems.map((item, index) => {
           const active = checkActive(item);
@@ -162,7 +162,7 @@ const SidebarMenu = ({ onClose }) => {
               <a
                 href={item.path}
                 onClick={(e) => handleItemClick(e, item)}
-                className={`block font-serif text-2xl sm:text-3xl font-light tracking-wide transition-colors duration-300 ${
+                className={`block font-serif text-xl sm:text-2xl md:text-3xl font-light tracking-wide transition-colors duration-300 ${
                   active ? 'text-luxury-gold' : 'text-white/80 hover:text-luxury-gold'
                 }`}
               >

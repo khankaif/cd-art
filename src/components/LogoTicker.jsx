@@ -31,15 +31,15 @@ const LogoTicker = () => {
     }, []);
 
     return (
-        <section className="py-20 bg-white overflow-hidden relative">
-            <div className="container mx-auto px-6 mb-12 text-center">
-                <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">Trusted by Industry Leaders</p>
+        <section className="py-12 md:py-20 bg-white overflow-hidden relative">
+            <div className="container mx-auto px-4 sm:px-6 mb-8 md:mb-12 text-center">
+                <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-widest">Trusted by Industry Leaders</p>
             </div>
             <div className="relative w-full overflow-hidden">
-                <div ref={trackRef} className="flex whitespace-nowrap gap-16 md:gap-32 min-w-max px-16 md:px-32">
+                <div ref={trackRef} className="flex whitespace-nowrap gap-12 md:gap-32 min-w-max px-12 md:px-32">
                     {duplicatedBrands.map((brand, index) => (
                         <div key={index} className="flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity duration-300 cursor-default">
-                            <span className="text-2xl md:text-3xl font-serif text-luxury-black">{brand}</span>
+                            <span className="text-xl sm:text-2xl md:text-3xl font-serif text-luxury-black">{brand}</span>
                         </div>
                     ))}
                 </div>

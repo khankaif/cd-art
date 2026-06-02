@@ -42,29 +42,29 @@ const Navbar = () => {
         }
     };
 
-    const linkBaseClass = "px-2.5 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-[11px] tracking-[0.25em] uppercase transition-all duration-300";
+    const linkBaseClass = "px-1.5 sm:px-2.5 md:px-4 py-1 sm:py-1.5 rounded-full text-[8px] sm:text-[10px] md:text-[11px] tracking-[0.1em] sm:tracking-[0.25em] uppercase transition-all duration-300";
     const activeClass = "text-luxury-black font-bold bg-luxury-black/8";
     const inactiveClass = "text-[#1F1F1F] font-medium hover:text-luxury-black hover:bg-luxury-black/[0.03]";
 
     return (
-        <div className="fixed top-4 left-0 w-full z-50 px-4 sm:px-8 flex justify-center pointer-events-none">
+        <div className="fixed top-2 sm:top-4 left-0 w-full z-50 px-2 sm:px-4 md:px-8 flex justify-center pointer-events-none">
             <nav
                 ref={navRef}
-                className="pointer-events-auto grid grid-cols-[1fr_auto_1fr] items-center px-6 sm:px-8 py-2.5 rounded-full bg-white/45 backdrop-blur-md border border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.02)] w-full max-w-3xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:bg-white/55"
+                className="pointer-events-auto grid grid-cols-[1fr_auto_1fr] items-center px-3 sm:px-6 md:px-8 py-1.5 sm:py-2.5 rounded-full bg-white/45 backdrop-blur-md border border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.02)] w-full max-w-3xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:bg-white/55"
             >
                 {/* Logo Section (Left-aligned) */}
                 <div className="flex justify-start">
                     <a
                         href="/"
                         onClick={handleLogoClick}
-                        className="text-base sm:text-lg font-serif font-bold text-luxury-black tracking-[0.1em] hover:opacity-75 transition-opacity duration-300"
+                        className="text-sm sm:text-base md:text-lg font-serif font-bold text-luxury-black tracking-[0.05em] sm:tracking-[0.1em] hover:opacity-75 transition-opacity duration-300"
                     >
                         CD.
                     </a>
                 </div>
 
                 {/* Navigation Links (Perfectly Centered) */}
-                <div className="flex items-center gap-1 sm:gap-2 justify-center">
+                <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2 justify-center">
                     <a
                         href="https://catalog.carpediam.in/"
                         onClick={(e) => handleNavClick(e, 'https://catalog.carpediam.in/', true)}

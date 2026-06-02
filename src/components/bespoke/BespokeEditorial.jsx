@@ -6,7 +6,7 @@ const BespokeEditorial = ({ scrollToSection }) => {
         <div id="editorial-sections" className="bg-white">
 
             {/* 2.1 Custom Design Consultation (Overlay) */}
-            <section className="relative h-[80vh] md:h-screen w-full flex items-center overflow-hidden border-b border-gray-100">
+            <section className="relative min-h-[70vh] md:min-h-screen w-full flex items-center overflow-hidden border-b border-gray-100 py-16 md:py-0">
                 <div className="absolute inset-0 z-0 overflow-hidden">
                     <div
                         className="editorial-parallax-bg absolute top-[-10%] left-0 w-full h-[120%] bg-cover bg-center"
@@ -17,8 +17,8 @@ const BespokeEditorial = ({ scrollToSection }) => {
                     <div className="absolute inset-0 bg-white/70 md:hidden" />
                 </div>
 
-                <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                    <div className="editorial-text-animate max-w-xl text-left bg-white/80 backdrop-blur-md p-8 md:p-14 rounded-3xl border border-white/60 shadow-xl space-y-6">
+                <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
+                    <div className="editorial-text-animate max-w-xl text-left bg-white/80 backdrop-blur-md p-6 sm:p-8 md:p-14 rounded-3xl border border-white/60 shadow-xl space-y-6">
                         <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold block">
                             Phase One
                         </span>
@@ -33,9 +33,9 @@ const BespokeEditorial = ({ scrollToSection }) => {
             </section>
 
             {/* 2.2 Sketch to Reality (Grid Layout) */}
-            <section className="py-24 md:py-36 bg-[#FAF9F6] border-b border-gray-100 overflow-hidden">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+            <section className="py-16 md:py-36 bg-[#FAF9F6] border-b border-gray-100 overflow-hidden">
+                <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-center">
                         {/* Left Image */}
                         <div className="lg:col-span-5 editorial-image-animate">
                             <div className="relative aspect-[3/4] w-full rounded-[2.5rem] overflow-hidden shadow-xl border border-gray-100/50 group bg-white">
@@ -72,7 +72,7 @@ const BespokeEditorial = ({ scrollToSection }) => {
             </section>
 
             {/* 2.3 CAD & Precision Engineering (Overlay) */}
-            <section className="relative h-[80vh] md:h-screen w-full flex items-center overflow-hidden border-b border-gray-100">
+            <section className="relative min-h-[70vh] md:min-h-screen w-full flex items-center overflow-hidden border-b border-gray-100 py-16 md:py-0">
                 <div className="absolute inset-0 z-0 overflow-hidden">
                     <div
                         className="editorial-parallax-bg absolute top-[-10%] left-0 w-full h-[120%] bg-cover bg-center"
@@ -83,8 +83,8 @@ const BespokeEditorial = ({ scrollToSection }) => {
                     <div className="absolute inset-0 bg-white/70 md:hidden" />
                 </div>
 
-                <div className="container mx-auto px-6 max-w-7xl relative z-10 flex justify-end">
-                    <div className="editorial-text-animate max-w-xl text-left bg-white/80 backdrop-blur-md p-8 md:p-14 rounded-3xl border border-white/60 shadow-xl space-y-6">
+                <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10 flex justify-end">
+                    <div className="editorial-text-animate max-w-xl text-left bg-white/80 backdrop-blur-md p-6 sm:p-8 md:p-14 rounded-3xl border border-white/60 shadow-xl space-y-6">
                         <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold block">
                             Phase Three
                         </span>
@@ -99,9 +99,9 @@ const BespokeEditorial = ({ scrollToSection }) => {
             </section>
 
             {/* 2.4 Gemstone Selection (Grid Layout) */}
-            <section className="py-24 md:py-36 bg-[#FAF9F6] border-b border-gray-100 overflow-hidden">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+            <section className="py-16 md:py-36 bg-[#FAF9F6] border-b border-gray-100 overflow-hidden">
+                <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-center">
                         {/* Left Text (Appears first on desktop, orders second on mobile) */}
                         <div className="lg:col-span-7 order-2 lg:order-1 space-y-8 text-left editorial-text-animate">
                             <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold">
@@ -130,7 +130,7 @@ const BespokeEditorial = ({ scrollToSection }) => {
             </section>
 
             {/* 2.5 Artisan Craftsmanship (Overlay) */}
-            <section className="relative h-[80vh] md:h-screen w-full flex items-center justify-center overflow-hidden border-b border-gray-100">
+            <section className="relative min-h-[70vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden border-b border-gray-100 py-16 md:py-0">
                 <div className="absolute inset-0 z-0 overflow-hidden">
                     <div
                         className="editorial-parallax-bg absolute top-[-10%] left-0 w-full h-[120%] bg-cover bg-center"
@@ -140,8 +140,8 @@ const BespokeEditorial = ({ scrollToSection }) => {
                     <div className="absolute inset-0 bg-white/70" />
                 </div>
 
-                <div className="container mx-auto px-6 max-w-7xl relative z-10 flex justify-center">
-                    <div className="editorial-text-animate max-w-2xl text-center bg-white/80 backdrop-blur-md p-8 md:p-14 rounded-3xl border border-white/60 shadow-xl space-y-6">
+                <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10 flex justify-center">
+                    <div className="editorial-text-animate max-w-2xl text-center bg-white/80 backdrop-blur-md p-6 sm:p-8 md:p-14 rounded-3xl border border-white/60 shadow-xl space-y-6">
                         <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold block">
                             Phase Five
                         </span>

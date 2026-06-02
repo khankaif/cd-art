@@ -2,7 +2,7 @@ import React from 'react';
 
 const PhilosophySection = ({ philosophyBgRef }) => {
     return (
-        <section className="philosophy-trigger relative py-48 md:py-60 overflow-hidden flex items-center justify-center border-b border-gray-100">
+        <section className="philosophy-trigger relative py-32 md:py-60 overflow-hidden flex items-center justify-center border-b border-gray-100">
             {/* Full-width Background Image */}
             <div className="absolute inset-0 z-0">
                 <div 
@@ -17,7 +17,7 @@ const PhilosophySection = ({ philosophyBgRef }) => {
                 </div>
             </div>
 
-            <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
                 <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold inline-block mb-8">
                     The Philosophy
                 </span>

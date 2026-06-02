@@ -20,17 +20,17 @@ import SidebarMenu from './components/SidebarMenu';
 gsap.registerPlugin(ScrollTrigger);
 
 // Scroll restoration and GSAP cleanup on route transition
-const ScrollToTop = () => {
+const ScrollToTop = () => {  //Whenever user changes page automatically goes to Top.
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({
+    window.scrollTo({  //Always open new page from top.
       top: 0,
       behavior: "instant"
     });
 
     const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
+      ScrollTrigger.refresh(); //Recalculate all scroll animations, Very useful because page content changed.
     }, 100);
 
     return () => clearTimeout(timer);
@@ -39,19 +39,10 @@ const ScrollToTop = () => {
   return null;
 };
 
-//Create a main react component called App. Evrything inside website assembles in APP.jsx
+//Create a main react component called App. Everything inside website assembles in APP.jsx
 function App() {
   const [activeOffice, setActiveOffice] = useState('europe');
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    if (newsletterEmail) {
-      setSubscribed(true);
-    }
-  };
 
   const offices = {
     europe: {
@@ -101,101 +92,76 @@ function App() {
         </Routes>
       </main>
 
-      <footer className="bg-white border-t border-gray-100/80 pt-20 pb-12 font-sans">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <footer className="bg-white border-t border-gray-100/80 pt-8 md:pt-12 pb-6 md:pb-8 font-sans">
+        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
           {/* Top Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 mb-8 md:mb-12 text-left">
 
             {/* Column 1: Branding */}
-            <div className="space-y-6">
-              <h2 className="text-3xl font-serif font-bold text-luxury-black tracking-tight">CD.</h2>
-              <p className="text-sm text-gray-500 font-light leading-relaxed max-w-xs">
+            <div className="space-y-4">
+              <h2 className="text-2xl font-serif font-bold text-luxury-black tracking-widest uppercase">CD.</h2>
+              <p className="text-xs text-gray-500 font-light leading-relaxed max-w-xs">
                 Modernizing the legacy of high-end manufacturing. Empowering independent designers with a seamless CAD-to-fulfillment pipeline.
               </p>
             </div>
 
-            {/* Column 2: Stay in Touch */}
-            <div className="space-y-6">
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-luxury-black">Stay in Touch</h3>
-              <p className="text-sm text-gray-500 font-light leading-relaxed">
-                Sign up for email updates on the latest CD. collections, design innovations, and exclusive releases.
-              </p>
-              {subscribed ? (
-                <p className="text-xs text-luxury-gold uppercase tracking-wider font-semibold animate-pulse">
-                  Thank you for subscribing.
-                </p>
-              ) : (
-                <form onSubmit={handleNewsletterSubmit} className="flex items-center border-b border-gray-200 py-1.5 focus-within:border-luxury-black transition-colors duration-300">
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    className="appearance-none bg-transparent border-none w-full text-sm text-luxury-black mr-3 py-1 px-1 leading-tight focus:outline-none placeholder-gray-400 font-light"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="flex-shrink-0 text-xs font-semibold uppercase tracking-wider text-luxury-black hover:text-luxury-gold transition-colors duration-300 cursor-pointer"
-                  >
-                    Submit
-                  </button>
-                </form>
-              )}
-            </div>
-
-            {/* Column 3: Support */}
-            <div className="space-y-6">
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-luxury-black">Support</h3>
-              <ul className="flex flex-col gap-3">
+            {/* Column 2: Navigation & Support */}
+            <div className="space-y-4">
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-luxury-black/60">Info</h3>
+              <ul className="flex flex-col gap-2.5">
                 <li>
-                  <a href="#contact" className="text-sm text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light cursor-pointer">
-                    Contact Us
+                  <a href="https://catalog.carpediam.in/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
+                    Catalogue
                   </a>
                 </li>
                 <li>
-                  <a href="#services-anchor" className="text-sm text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light cursor-pointer">
-                    Services
+                  <a href="/our-story" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
+                    Our Story
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light cursor-pointer">
+                  <a href="/contact" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light cursor-pointer">
+                  <a href="#" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
                     Terms of Service
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Column 4: Offices */}
-            <div className="space-y-6">
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-luxury-black">Offices</h3>
+            {/* Column 3: Offices */}
+            <div className="space-y-4">
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-luxury-black/60">Offices</h3>
 
               {/* Tabs */}
-              <div className="flex gap-4 border-b border-gray-100 pb-2">
+              <div className="flex gap-4 border-b border-gray-100 pb-1.5">
                 <button
                   onClick={() => setActiveOffice('europe')}
-                  className={`text-xs uppercase tracking-widest transition-colors duration-300 cursor-pointer ${activeOffice === 'europe' ? 'text-luxury-black font-semibold border-b border-luxury-black -mb-[9px] pb-[7px]' : 'text-gray-400 hover:text-luxury-black'}`}
+                  className={`text-[10px] uppercase tracking-widest transition-colors duration-300 cursor-pointer ${activeOffice === 'europe' ? 'text-luxury-black font-semibold border-b border-luxury-black -mb-[7.5px] pb-[6px]' : 'text-gray-400 hover:text-luxury-black'}`}
                 >
                   Europe
                 </button>
                 <button
                   onClick={() => setActiveOffice('india')}
-                  className={`text-xs uppercase tracking-widest transition-colors duration-300 cursor-pointer ${activeOffice === 'india' ? 'text-luxury-black font-semibold border-b border-luxury-black -mb-[9px] pb-[7px]' : 'text-gray-400 hover:text-luxury-black'}`}
+                  className={`text-[10px] uppercase tracking-widest transition-colors duration-300 cursor-pointer ${activeOffice === 'india' ? 'text-luxury-black font-semibold border-b border-luxury-black -mb-[7.5px] pb-[6px]' : 'text-gray-400 hover:text-luxury-black'}`}
                 >
                   India
                 </button>
               </div>
 
               {/* Stacked Address */}
-              <div className="min-h-[72px]">
-                <p className="text-sm text-luxury-black font-medium mb-1">{offices[activeOffice].name}</p>
+              <div>
+                <p className="text-xs text-luxury-black font-medium mb-1">{offices[activeOffice].name}</p>
                 {offices[activeOffice].address.map((line, idx) => (
-                  <p key={idx} className="text-sm text-gray-500 font-light leading-relaxed">
+                  <p key={idx} className="text-xs text-gray-500 font-light leading-relaxed">
                     {line}
                   </p>
                 ))}
@@ -205,24 +171,24 @@ function App() {
           </div>
 
           {/* Bottom Row */}
-          <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-            <p className="text-xs text-gray-400 uppercase tracking-widest font-light">
+          <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-4 text-center md:text-left">
+            <p className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-light">
               © {new Date().getFullYear()} CD. ALL RIGHTS RESERVED.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-6 md:gap-8 items-center text-xs text-gray-400 font-light uppercase tracking-widest">
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 items-center text-[10px] text-gray-400 font-light uppercase tracking-[0.2em]">
               <a href="tel:+918850157354" className="hover:text-luxury-black transition-colors duration-300">
                 +91 88501 57364
               </a>
-              <span className="hidden md:inline text-gray-200">|</span>
+              <span className="text-gray-200">·</span>
               <a href="mailto:hello@carpediam.in" className="hover:text-luxury-black transition-colors duration-300 lowercase">
                 hello@carpediam.in
               </a>
-              <span className="hidden md:inline text-gray-200">|</span>
+              <span className="text-gray-200">·</span>
               <a href="https://instagram.com/carpediamjewelry" target="_blank" rel="noopener noreferrer" className="hover:text-luxury-black transition-colors duration-300">
                 Instagram
               </a>
-              <span className="hidden md:inline text-gray-200">|</span>
+              <span className="text-gray-200">·</span>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-luxury-black transition-colors duration-300">
                 LinkedIn
               </a>

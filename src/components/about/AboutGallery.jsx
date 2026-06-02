@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,14 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutGallery = () => {
     const galleryRef = useRef(null);
-    const [flippedCards, setFlippedCards] = useState({});
-
-    const toggleFlip = (index) => {
-        setFlippedCards(prev => ({
-            ...prev,
-            [index]: !prev[index]
-        }));
-    };
+    const [flippedCardIndex, setFlippedCardIndex] = useState(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -73,11 +66,11 @@ const AboutGallery = () => {
     ];
 
     return (
-        <div ref={galleryRef} className="py-32 bg-white border-b border-gray-100">
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className="text-center md:text-left md:flex justify-between items-end mb-20 space-y-4 md:space-y-0">
+        <div ref={galleryRef} className="py-16 md:py-24 lg:py-32 bg-white border-b border-gray-100">
+            <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+                <div className="text-center md:text-left md:flex justify-between items-end mb-12 md:mb-20 space-y-4 md:space-y-0">
                     <div>
-                        <span className="inline-block px-3 py-1 rounded-full bg-luxury-gold/10 text-luxury-gold text-xs font-bold uppercase tracking-widest mb-6">
+                        <span className="inline-block px-3 py-1 rounded-full bg-luxury-gold/10 text-luxury-gold text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
                             Behind The Art
                         </span>
                         <h2 className="text-4xl md:text-5xl font-serif text-luxury-black">
@@ -90,50 +83,42 @@ const AboutGallery = () => {
                 </div>
 
                 {/* Immersive Gallery Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {galleryImages.map((img, i) => (
                         <div
                             key={i}
-                            className={`gallery-item perspective-1000 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-luxury-gold focus-visible:ring-offset-2 rounded-[2rem] ${img.aspect}`}
-                            onClick={() => toggleFlip(i)}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                    e.preventDefault();
-                                    toggleFlip(i);
+                            className={`gallery-item group perspective-1000 rounded-[1.5rem] md:rounded-[2rem] ${img.aspect} cursor-pointer lg:cursor-auto`}
+                            onClick={() => {
+                                if (window.innerWidth < 1024) {
+                                    setFlippedCardIndex(flippedCardIndex === i ? null : i);
                                 }
                             }}
-                            role="button"
-                            tabIndex={0}
-                            aria-expanded={!!flippedCards[i]}
-                            aria-label={`${img.title} - ${img.tag}. Click to view details.`}
                         >
                             <div
-                                className={`w-full h-full relative preserve-3d transition-transform duration-700 ease-in-out ${
-                                    flippedCards[i] ? 'rotate-y-180' : ''
-                                }`}
+                                className={`w-full h-full relative preserve-3d transition-transform duration-700 ease-in-out lg:group-hover:rotate-y-180 ${flippedCardIndex === i ? 'rotate-y-180' : ''}`}
                             >
                                 {/* Front Side */}
-                                <div className="absolute inset-0 w-full h-full rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden group">
+                                <div className="absolute inset-0 w-full h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden">
                                     <img
                                         src={img.src}
                                         alt={img.alt}
-                                        className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                                        className={`w-full h-full object-cover transition-transform duration-1000 ease-out lg:group-hover:scale-110 ${flippedCardIndex === i ? 'scale-110' : ''}`}
                                     />
                                     {/* Overlay Content */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                                        <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold mb-2">{img.tag}</span>
-                                        <h4 className="text-xl font-serif text-white font-medium">{img.title}</h4>
+                                    <div className={`absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent transition-all duration-500 flex flex-col justify-end p-6 md:p-8 ${flippedCardIndex === i ? 'opacity-100' : 'opacity-0 lg:group-hover:opacity-100'}`}>
+                                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-luxury-gold mb-1 md:mb-2">{img.tag}</span>
+                                        <h4 className="text-lg md:text-xl font-serif text-white font-medium">{img.title}</h4>
                                     </div>
                                 </div>
 
                                 {/* Back Side */}
-                                <div className="absolute inset-0 w-full h-full rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden rotate-y-180 bg-luxury-white border border-luxury-sand flex flex-col justify-center items-center p-8 text-center">
+                                <div className="absolute inset-0 w-full h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden rotate-y-180 bg-luxury-white border border-luxury-sand flex flex-col justify-center items-center p-6 md:p-8 text-center">
                                     {/* Decorative subtle gold accent tag */}
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-luxury-gold/80 mb-2">
+                                    <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-luxury-gold/80 mb-1 md:mb-2">
                                         {img.tag}
                                     </span>
                                     
-                                    <h4 className="text-2xl font-serif text-luxury-black font-semibold">
+                                    <h4 className="text-xl md:text-2xl font-serif text-luxury-black font-semibold">
                                         {img.title}
                                     </h4>
                                     

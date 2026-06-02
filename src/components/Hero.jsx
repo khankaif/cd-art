@@ -146,7 +146,7 @@ const Hero = () => {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-[100svh] w-full overflow-hidden bg-[#e4dfd5] border-b border-gray-200/50 flex flex-col justify-center items-center pt-28 pb-24"
+            className="relative min-h-[85svh] md:min-h-[100svh] w-full overflow-hidden bg-[#e4dfd5] border-b border-gray-200/50 flex flex-col justify-center items-center pt-24 md:pt-28 pb-16 md:pb-24"
         >
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div
@@ -169,21 +169,21 @@ const Hero = () => {
                     </span>
 
                     {/* Heading */}
-                    <h1 className="hero-title text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-serif text-luxury-black tracking-tight leading-[1.05] mb-8 font-light">
-                        <div className="overflow-hidden py-1">
+                    <h1 className="hero-title text-4xl sm:text-6xl md:text-8xl lg:text-8xl xl:text-9xl font-serif text-white tracking-tight leading-[1.05] mb-6 md:mb-8 font-light">
+                        <div className="overflow-hidden py-6">
                             <span className="block hero-title-line">
                                 Fine Jewelry,
                             </span>
                         </div>
-                        <div className="overflow-hidden py-1">
-                            <span className="italic font-light text-luxury-black/65 block hero-title-line">
+                        <div className="overflow-hidden py-2">
+                            <span className="italic font-light text-white block hero-title-line">
                                 Simplified.
                             </span>
                         </div>
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="hero-subtitle text-xs sm:text-sm md:text-base text-luxury-black/85 font-normal max-w-md sm:max-w-lg leading-relaxed tracking-wide mb-10">
+                    <p className="hero-subtitle text-xs sm:text-sm md:text-base text-white font-medium max-w-[280px] sm:max-w-md md:max-w-lg mx-auto leading-relaxed tracking-wide mb-8 md:mb-10 drop-shadow-lg">
                         The digital infrastructure for modern jewelry brands.
                         <br className="hidden sm:block" />
                         From design to delivery, we power your growth.
@@ -207,7 +207,7 @@ const Hero = () => {
 
                     {/* Scroll Indicator */}
                     <div
-                        className="hero-scroll-indicator flex flex-col items-center cursor-pointer pointer-events-auto group px-6 py-3 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 mt-12"
+                        className="hero-scroll-indicator flex flex-col items-center cursor-pointer pointer-events-auto group px-6 py-3 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 mt-8 md:mt-12"
                         onClick={handleScrollDown}
                     >
                         <span className="text-[14px] tracking-[0.4em] uppercase text-black font-black mb-2.5 transition-colors duration-300">
