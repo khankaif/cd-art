@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import precisionBg from '../../assets/Precision Manufacturing.png';
 
 const PrecisionHero = ({ heroRef, heroBgRef, scrollToSection }) => {
     const navigate = useNavigate();
@@ -9,7 +10,7 @@ const PrecisionHero = ({ heroRef, heroBgRef, scrollToSection }) => {
             <div ref={heroBgRef} className="absolute inset-0 z-0">
                 <div
                     className="w-full h-[125%] bg-cover bg-center absolute top-0 left-0"
-                    style={{ backgroundImage: `url('src/assets/Precision Manufacturing.png')` }}
+                    style={{ backgroundImage: `url(${precisionBg})` }}
                 >
 
                 </div>
