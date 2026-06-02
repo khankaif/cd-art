@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,7 +6,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutGallery = () => {
     const galleryRef = useRef(null);
-    const [flippedCardIndex, setFlippedCardIndex] = useState(null);
+    const [flippedIndex, setFlippedIndex] = useState(null);
+
+    const handleCardTap = (e, index) => {
+        const isMobileOrTablet = window.innerWidth < 1024;
+        if (!isMobileOrTablet) return;
+
+        setFlippedIndex(prev => prev === index ? null : index);
+    };
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -25,9 +32,28 @@ const AboutGallery = () => {
                     }
                 }
             );
+
+            // Mobile & tablet flip on scroll
+            let mm = gsap.matchMedia();
+            mm.add("(max-width: 1023px)", () => {
+                const cards = gsap.utils.toArray(".gallery-item");
+                cards.forEach((card, i) => {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: "top 60%",
+                        end: "bottom 40%",
+                        onEnter: () => setFlippedIndex(i),
+                        onEnterBack: () => setFlippedIndex(i),
+                        onLeave: () => setFlippedIndex(prev => prev === i ? null : prev),
+                        onLeaveBack: () => setFlippedIndex(prev => prev === i ? null : prev),
+                    });
+                });
+            });
         }, galleryRef);
 
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+        };
     }, []);
 
     const galleryImages = [
@@ -84,28 +110,28 @@ const AboutGallery = () => {
 
                 {/* Immersive Gallery Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                    {galleryImages.map((img, i) => (
-                        <div
-                            key={i}
-                            className={`gallery-item group perspective-1000 rounded-[1.5rem] md:rounded-[2rem] ${img.aspect} cursor-pointer lg:cursor-auto`}
-                            onClick={() => {
-                                if (window.innerWidth < 1024) {
-                                    setFlippedCardIndex(flippedCardIndex === i ? null : i);
-                                }
-                            }}
-                        >
+                    {galleryImages.map((img, i) => {
+                        const isFlipped = flippedIndex === i;
+                        return (
                             <div
-                                className={`w-full h-full relative preserve-3d transition-transform duration-700 ease-in-out lg:group-hover:rotate-y-180 ${flippedCardIndex === i ? 'rotate-y-180' : ''}`}
+                                key={i}
+                                className={`gallery-item group perspective-1000 rounded-[1.5rem] md:rounded-[2rem] ${img.aspect} cursor-default`}
+                                onClick={(e) => handleCardTap(e, i)}
                             >
-                                {/* Front Side */}
-                                <div className="absolute inset-0 w-full h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden">
-                                    <img
-                                        src={img.src}
-                                        alt={img.alt}
-                                        className={`w-full h-full object-cover transition-transform duration-1000 ease-out lg:group-hover:scale-110 ${flippedCardIndex === i ? 'scale-110' : ''}`}
-                                    />
-                                    {/* Overlay Content */}
-                                    <div className={`absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent transition-all duration-500 flex flex-col justify-end p-6 md:p-8 ${flippedCardIndex === i ? 'opacity-100' : 'opacity-0 lg:group-hover:opacity-100'}`}>
+                                <div
+                                    className={`w-full h-full relative preserve-3d transition-transform duration-700 ease-in-out lg:group-hover:rotate-y-180 ${
+                                        isFlipped ? 'rotate-y-180' : ''
+                                    }`}
+                                >
+                                    {/* Front Side */}
+                                    <div className="absolute inset-0 w-full h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 backface-hidden">
+                                        <img
+                                            src={img.src}
+                                            alt={img.alt}
+                                            className="w-full h-full object-cover transition-transform duration-1000 ease-out lg:group-hover:scale-110"
+                                        />
+                                        {/* Overlay Content */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent transition-all duration-500 flex flex-col justify-end p-6 md:p-8 opacity-0 lg:group-hover:opacity-100">
                                         <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-luxury-gold mb-1 md:mb-2">{img.tag}</span>
                                         <h4 className="text-lg md:text-xl font-serif text-white font-medium">{img.title}</h4>
                                     </div>
@@ -131,7 +157,8 @@ const AboutGallery = () => {
                                 </div>
                             </div>
                         </div>
-                    ))}
+                    );
+                })}
                 </div>
             </div>
         </div>

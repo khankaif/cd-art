@@ -175,7 +175,7 @@ const Hero = () => {
                                 Fine Jewelry,
                             </span>
                         </div>
-                        <div className="overflow-hidden py-2">
+                        <div className="overflow-hidden py-2 ">
                             <span className="italic font-light text-white block hero-title-line">
                                 Simplified.
                             </span>

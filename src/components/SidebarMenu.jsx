@@ -6,14 +6,7 @@ const SidebarMenu = ({ onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Prevent background scrolling while sidebar is open
-  useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = originalStyle;
-    };
-  }, []);
+
 
   const menuItems = [
     { name: 'Home', path: '/' },
@@ -32,7 +25,13 @@ const SidebarMenu = ({ onClose }) => {
       if (location.pathname === '/') {
         const element = document.getElementById('about');
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
         }
         window.history.replaceState(null, '', '#about');
       } else {

@@ -17,10 +17,20 @@ const HomePage = () => {
             const timer = setTimeout(() => {
                 const element = document.getElementById(targetId);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = element.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    window.scrollTo({
+                        top: elementPosition,
+                        behavior: 'smooth'
+                    });
                 }
-                // Clear location state to prevent scrolling again on page refresh
-                window.history.replaceState({}, document.title);
+                // Clear location state to prevent scrolling again on page refresh, and set hash if scrolling to about
+                if (targetId === 'about') {
+                    window.history.replaceState(null, '', '#about');
+                } else {
+                    window.history.replaceState({}, document.title);
+                }
             }, 150);
             return () => clearTimeout(timer);
         }

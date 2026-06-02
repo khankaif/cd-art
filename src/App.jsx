@@ -92,10 +92,10 @@ function App() {
         </Routes>
       </main>
 
-      <footer className="bg-white border-t border-gray-100/80 pt-8 md:pt-12 pb-6 md:pb-8 font-sans">
-        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+      <footer className="bg-white border-t border-gray-100/80 pt-12 pb-8 font-sans">
+        <div className="container mx-auto px-6 max-w-7xl">
           {/* Top Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 mb-8 md:mb-12 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 mb-12 text-left">
 
             {/* Column 1: Branding */}
             <div className="space-y-4">
@@ -171,7 +171,7 @@ function App() {
           </div>
 
           {/* Bottom Row */}
-          <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-4 text-center md:text-left">
+          <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <p className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-light">
               © {new Date().getFullYear()} CD. ALL RIGHTS RESERVED.
             </p>
