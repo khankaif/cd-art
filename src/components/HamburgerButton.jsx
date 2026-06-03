@@ -56,26 +56,24 @@ const HamburgerButton = ({ isOpen, onClick }) => {
 
     if (isOpen) return null;
 
-    // Premium context-aware glassmorphic styling
-    const containerStyles = theme === 'dark'
-        ? 'bg-luxury-black/[0.04] border-luxury-black/10 hover:bg-luxury-black/[0.08] hover:border-luxury-black/15 shadow-[0_8px_32px_0_rgba(10,10,10,0.03)]'
-        : 'bg-white/10 border-white/15 hover:bg-white/20 hover:border-white/25 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)]';
+    // Theme logic no longer dictates button background/border, as it sits on the white navbar strip
+    // We only need the lines to be dark (luxury-black) to contrast the white navbar
+    const lineColors = 'bg-luxury-black';
 
-    const lineColors = theme === 'dark' ? 'bg-luxury-black' : 'bg-white';
-
+    // Slide up with the navbar instead of sliding left
     const visibilityClasses = isVisible 
-        ? "opacity-100 translate-x-0" 
-        : "opacity-0 -translate-x-[60px] pointer-events-none";
+        ? "opacity-100 translate-y-0" 
+        : "opacity-0 -translate-y-full pointer-events-none";
 
     return (
         <button
             onClick={onClick}
-            className={`fixed top-12 left-6 sm:top-8 sm:left-8 md:left-12 z-40 flex justify-center items-center w-12 h-12 rounded-full border backdrop-blur-md transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto cursor-pointer focus:outline-none active:scale-95 group ${containerStyles} ${visibilityClasses}`}
+            className={`fixed top-0 left-0 z-50 flex justify-center items-center h-16 sm:h-20 w-16 sm:w-20 lg:w-24 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto cursor-pointer focus:outline-none group ${visibilityClasses}`}
             aria-label="Open Menu"
         >
-            <div className="flex flex-col gap-1.5 items-start justify-center">
-                <span className={`h-[2px] ${lineColors} transition-all duration-300 ease-out w-5 group-hover:w-7`} />
-                <span className={`h-[2px] ${lineColors} transition-all duration-300 ease-out w-7 group-hover:w-4`} />
+            <div className="flex flex-col gap-1.5 items-center justify-center w-full">
+                <span className={`h-[1px] sm:h-[1.5px] ${lineColors} transition-all duration-300 ease-out w-5 sm:w-6 group-hover:w-8`} />
+                <span className={`h-[1px] sm:h-[1.5px] ${lineColors} transition-all duration-300 ease-out w-8 group-hover:w-5 sm:group-hover:w-6`} />
             </div>
         </button>
     );
