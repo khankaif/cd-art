@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';  //importing Greensock animation library
 import { ScrollTrigger } from 'gsap/ScrollTrigger'; // importing Scroll animation it allows animation to happen on scroll
+import { Link } from "react-router-dom";
 
 //importing components
 import Navbar from './components/Navbar';
@@ -114,16 +115,19 @@ function App() {
                     Catalogue
                   </a>
                 </li>
-                <li>
-                  <a href="/our-story" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
-                    Our Story
-                  </a>
-                </li>
-                <li>
-                  <a href="/contact" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
-                    Contact
-                  </a>
-                </li>
+                <Link
+                  to="/our-story"
+                  className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide"
+                >
+                  Our Story
+                </Link>
+
+                <Link
+                  to="/contact"
+                  className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide"
+                >
+                  Contact
+                </Link>
                 <li>
                   <a href="#" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
                     Privacy Policy
