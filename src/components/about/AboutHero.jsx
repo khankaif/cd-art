@@ -47,14 +47,14 @@ const AboutHero = () => {
             </div>
 
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex flex-col items-center">
-                <span className="inline-block px-3 py-1 rounded-full bg-luxury-black/5 text-luxury-black/85 text-xs font-bold uppercase tracking-widest mb-6">
+                <span className="inline-block px-3 py-1 rounded-full bg-[#D4AF37] text-white text-xs font-bold uppercase tracking-widest mb-6">
                     Who We Are
                 </span>
-                <h1 ref={heroTitleRef} className="text-5xl md:text-7xl font-serif text-luxury-black/100 tracking-tight leading-[1.1] mb-8">
+                <h1 ref={heroTitleRef} className="text-5xl md:text-7xl font-serif text-white tracking-tight leading-[1.1] mb-8">
                     The intersection of<br />
-                    <span className="italic font-light text-luxury-black/80 block mt-2 font-serif">tradition & technology.</span>
+                    <span className="italic font-light text-white/100 block mt-2 font-serif">tradition & technology.</span>
                 </h1>
-                <p ref={heroDescRef} className="text-base md:text-lg text-luxury-black/100 font-normal max-w-2xl mx-auto leading-relaxed">
+                <p ref={heroDescRef} className="text-base md:text-lg text-white font-normal max-w-2xl mx-auto leading-relaxed">
                     We build the digital architecture that empowers modern jewelry designers. By bridging artisanal handcrafting techniques with automated manufacturing frameworks, we redefine high-end curation.
                 </p>
             </div>
