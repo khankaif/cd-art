@@ -32,7 +32,7 @@ const HomePage = () => {
                     window.history.replaceState({}, document.title);
                 }
             }, 150);
-            return () => clearTimeout(timer);
+            return () => clearTimeout(timer);  //cleanup                    
         }
     }, [location]);
 
@@ -42,7 +42,6 @@ const HomePage = () => {
             <LogoTicker />
             <div id="services-anchor"></div>
             <Services />
-            <div></div>
             <Features />
             <About />
             <Contact />
