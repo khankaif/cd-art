@@ -93,112 +93,110 @@ function App() {
         </Routes>
       </main>
 
-      <footer className="bg-white border-t border-gray-100/80 pt-12 pb-8 font-sans">
-        <div className="container mx-auto px-6 max-w-7xl">
-          {/* Top Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 mb-12 text-left">
-
-            {/* Column 1: Branding */}
-            <div className="space-y-4">
-              <h2 className="text-2xl font-serif font-bold text-luxury-black tracking-widest uppercase">CD.</h2>
-              <p className="text-xs text-gray-500 font-light leading-relaxed max-w-xs">
-                Modernizing the legacy of high-end manufacturing. Empowering independent designers with a seamless CAD-to-fulfillment pipeline.
-              </p>
-            </div>
-
-            {/* Column 2: Navigation & Support */}
-            <div className="space-y-4">
-              <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-luxury-black/60">Info</h3>
-              <ul className="flex flex-col gap-2.5">
-                <li>
-                  <a href="https://catalog.carpediam.in/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
-                    Catalogue
-                  </a>
-                </li>
-                <Link
-                  to="/our-story"
-                  className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide"
-                >
-                  Our Story
+      <footer className="bg-luxury-black text-luxury-white pt-16 pb-8 font-sans border-t border-luxury-black">
+        <div className="container mx-auto px-6 sm:px-12 lg:px-20 max-w-[1600px]">
+          {/* Main Footer Content */}
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24 mb-16">
+            
+            {/* Branding & Core Navigation */}
+            <div className="flex flex-col gap-8 w-full lg:w-auto">
+              <h2 className="text-4xl sm:text-5xl font-serif font-light text-luxury-white tracking-widest uppercase">CD.</h2>
+              <div className="flex flex-wrap gap-x-8 gap-y-4 max-w-sm">
+                <a href="https://catalog.carpediam.in/" target="_blank" rel="noopener noreferrer" className="relative group text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/60 hover:text-luxury-white transition-colors duration-500">
+                  <span className="relative z-10">Catalogue</span>
+                  <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-gold transition-all duration-500 ease-out group-hover:w-full"></span>
+                </a>
+                <Link to="/our-story" className="relative group text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/60 hover:text-luxury-white transition-colors duration-500">
+                  <span className="relative z-10">Our Story</span>
+                  <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-gold transition-all duration-500 ease-out group-hover:w-full"></span>
                 </Link>
-
-                <Link
-                  to="/contact"
-                  className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide"
-                >
-                  Contact
+                <Link to="/contact" className="relative group text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/60 hover:text-luxury-white transition-colors duration-500">
+                  <span className="relative z-10">Contact</span>
+                  <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-gold transition-all duration-500 ease-out group-hover:w-full"></span>
                 </Link>
-                <li>
-                  <a href="#" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-xs text-gray-500 hover:text-luxury-black transition-colors duration-300 font-light tracking-wide">
-                    Terms of Service
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 3: Offices */}
-            <div className="space-y-4">
-              <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-luxury-black/60">Offices</h3>
-
-              {/* Tabs */}
-              <div className="flex gap-4 border-b border-gray-100 pb-1.5">
-                <button
-                  onClick={() => setActiveOffice('europe')}
-                  className={`text-[10px] uppercase tracking-widest transition-colors duration-300 cursor-pointer ${activeOffice === 'europe' ? 'text-luxury-black font-semibold border-b border-luxury-black -mb-[7.5px] pb-[6px]' : 'text-gray-400 hover:text-luxury-black'}`}
-                >
-                  Europe
-                </button>
-                <button
-                  onClick={() => setActiveOffice('india')}
-                  className={`text-[10px] uppercase tracking-widest transition-colors duration-300 cursor-pointer ${activeOffice === 'india' ? 'text-luxury-black font-semibold border-b border-luxury-black -mb-[7.5px] pb-[6px]' : 'text-gray-400 hover:text-luxury-black'}`}
-                >
-                  India
-                </button>
-              </div>
-
-              {/* Stacked Address */}
-              <div>
-                <p className="text-xs text-luxury-black font-medium mb-1">{offices[activeOffice].name}</p>
-                {offices[activeOffice].address.map((line, idx) => (
-                  <p key={idx} className="text-xs text-gray-500 font-light leading-relaxed">
-                    {line}
-                  </p>
-                ))}
               </div>
             </div>
 
+            {/* Offices & Connect */}
+            <div className="flex flex-col sm:flex-row gap-12 sm:gap-20 lg:gap-32 w-full lg:w-auto">
+              
+              {/* Offices */}
+              <div className="space-y-6 min-w-[200px]">
+                <h3 className="text-[9px] font-medium uppercase tracking-[0.3em] text-luxury-gold">Global Studios</h3>
+                <div className="flex gap-6 border-b border-white/10 pb-2 relative">
+                  <button
+                    onClick={() => setActiveOffice('europe')}
+                    className={`text-[9px] uppercase tracking-[0.2em] transition-colors duration-500 cursor-pointer ${activeOffice === 'europe' ? 'text-luxury-white font-medium' : 'text-luxury-white/40 hover:text-luxury-white/80'}`}
+                  >
+                    Europe
+                  </button>
+                  <button
+                    onClick={() => setActiveOffice('india')}
+                    className={`text-[9px] uppercase tracking-[0.2em] transition-colors duration-500 cursor-pointer ${activeOffice === 'india' ? 'text-luxury-white font-medium' : 'text-luxury-white/40 hover:text-luxury-white/80'}`}
+                  >
+                    India
+                  </button>
+                  {/* Animated Tab Indicator */}
+                  <div 
+                    className="absolute bottom-[-1px] h-[1px] bg-luxury-gold transition-all duration-500 ease-in-out"
+                    style={{
+                      left: activeOffice === 'europe' ? '0' : '52px',
+                      width: activeOffice === 'europe' ? '46px' : '36px'
+                    }}
+                  ></div>
+                </div>
+                
+                <div className="h-[80px] pt-2">
+                  <p className="text-xs text-luxury-white font-medium mb-2 tracking-wide">{offices[activeOffice].name}</p>
+                  {offices[activeOffice].address.map((line, idx) => (
+                    <p key={idx} className="text-xs text-luxury-white/50 font-light leading-[1.8]">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Connect */}
+              <div className="space-y-6">
+                <h3 className="text-[9px] font-medium uppercase tracking-[0.3em] text-luxury-gold">Connect</h3>
+                <div className="flex flex-col gap-4 pt-1">
+                  <a href="mailto:hello@carpediam.in" className="text-xs text-luxury-white/50 hover:text-luxury-gold transition-colors duration-500 font-light tracking-wide">
+                    hello@carpediam.in
+                  </a>
+                  <a href="tel:+918850157354" className="text-xs text-luxury-white/50 hover:text-luxury-gold transition-colors duration-500 font-light tracking-wide">
+                    +91 88501 57364
+                  </a>
+                  <div className="flex gap-5 pt-2">
+                    <a href="https://instagram.com/carpediamjewelry" target="_blank" rel="noopener noreferrer" className="relative group text-[9px] tracking-[0.2em] uppercase text-luxury-white/40 hover:text-luxury-white transition-colors duration-500">
+                      <span className="relative z-10">Instagram</span>
+                      <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="relative group text-[9px] tracking-[0.2em] uppercase text-luxury-white/40 hover:text-luxury-white transition-colors duration-500">
+                      <span className="relative z-10">LinkedIn</span>
+                      <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Bottom Row */}
-          <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-            <p className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-light">
+          {/* Bottom Legal Row */}
+          <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <p className="text-[9px] sm:text-[10px] text-luxury-white/30 uppercase tracking-[0.3em] font-light text-center sm:text-left">
               © {new Date().getFullYear()} CD. ALL RIGHTS RESERVED.
             </p>
-
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 items-center text-[10px] text-gray-400 font-light uppercase tracking-[0.2em]">
-              <a href="tel:+918850157354" className="hover:text-luxury-black transition-colors duration-300">
-                +91 88501 57364
+            <div className="flex gap-8">
+              <a href="#" className="relative group text-[9px] sm:text-[10px] text-luxury-white/30 hover:text-luxury-white uppercase tracking-[0.25em] transition-colors duration-500">
+                <span className="relative z-10">Privacy</span>
+                <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
               </a>
-              <span className="text-gray-200">·</span>
-              <a href="mailto:hello@carpediam.in" className="hover:text-luxury-black transition-colors duration-300 lowercase">
-                hello@carpediam.in
-              </a>
-              <span className="text-gray-200">·</span>
-              <a href="https://instagram.com/carpediamjewelry" target="_blank" rel="noopener noreferrer" className="hover:text-luxury-black transition-colors duration-300">
-                Instagram
-              </a>
-              <span className="text-gray-200">·</span>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-luxury-black transition-colors duration-300">
-                LinkedIn
+              <a href="#" className="relative group text-[9px] sm:text-[10px] text-luxury-white/30 hover:text-luxury-white uppercase tracking-[0.25em] transition-colors duration-500">
+                <span className="relative z-10">Terms</span>
+                <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
               </a>
             </div>
           </div>
-
         </div>
       </footer>
     </div>

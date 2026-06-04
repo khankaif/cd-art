@@ -1,116 +1,92 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, Instagram, MapPin } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutContact = () => {
-    const contactCardRef = useRef(null);
+    const contactRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Contact Card Reveal
-            gsap.fromTo(contactCardRef.current,
-                { y: 50, opacity: 0, filter: "blur(5px)" },
+            gsap.fromTo(".contact-animate",
+                { y: 40, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
-                    filter: "blur(0px)",
-                    duration: 1.2,
+                    duration: 1.5,
+                    stagger: 0.1,
                     ease: "power3.out",
                     scrollTrigger: {
-                        trigger: contactCardRef.current,
-                        start: "top 85%",
+                        trigger: contactRef.current,
+                        start: "top 80%",
                     }
                 }
             );
-        }, contactCardRef);
+        }, contactRef);
 
         return () => ctx.revert();
     }, []);
 
     return (
-        <div className="py-32 bg-luxury-black text-white relative overflow-hidden">
-            {/* Visual Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-luxury-gold/5 blur-[120px] pointer-events-none"></div>
-
-            <div className="container mx-auto px-6 max-w-4xl relative z-10">
-                <div ref={contactCardRef} className="rounded-[2.5rem] bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 md:p-16 shadow-2xl flex flex-col md:flex-row justify-between gap-12 items-stretch">
-                    {/* Left Info Column */}
-                    <div className="flex-1 space-y-8 flex flex-col justify-between">
-                        <div>
-                            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-white/60 text-xs font-bold uppercase tracking-widest mb-6">
-                                Connect
+        <section ref={contactRef} className="py-24 md:py-32 bg-luxury-white text-luxury-black border-b border-luxury-black/10">
+            <div className="container mx-auto px-6 sm:px-12 lg:px-20 max-w-[1600px]">
+                <div className="flex flex-col lg:flex-row justify-between items-start gap-16 lg:gap-24">
+                    
+                    {/* Left Typography Header */}
+                    <div className="w-full lg:w-1/2 flex flex-col items-start contact-animate">
+                        <div className="flex items-center gap-4 mb-8">
+                            <span className="w-8 h-[1px] bg-luxury-gold"></span>
+                            <span className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-medium">
+                                Inquiries
                             </span>
-                            <h3 className="text-4xl md:text-5xl font-serif tracking-tight leading-tight">
-                                Let's build<br />
-                                <span className="italic text-gray-400 font-light">together.</span>
-                            </h3>
                         </div>
-
-                        <div className="space-y-6 pt-6">
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-luxury-gold shrink-0">
-                                    <Mail className="w-4 h-4" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">Email</p>
-                                    <a href="mailto:hello@carpediam.in" className="text-base text-gray-200 hover:text-luxury-gold transition-colors font-light">
-                                        hello@carpediam.in
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-luxury-gold shrink-0">
-                                    <Phone className="w-4 h-4" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">Phone & Whatsapp</p>
-                                    <a href="tel:+918850157354" className="text-base text-gray-200 hover:text-luxury-gold transition-colors font-light">
-                                        +91 88501 57354
-                                    </a>
-                                </div>
-                            </div>
+                        <h2 className="text-5xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[1.05] font-light">
+                            Let's build<br />
+                            <span className="italic text-luxury-black/60 pr-4">together.</span>
+                        </h2>
+                        <div className="mt-12 lg:mt-24 w-full max-w-sm">
+                            <p className="text-sm text-luxury-black/50 font-light leading-relaxed border-l border-luxury-gold/30 pl-6">
+                                Mumbai studio visits are scheduled strictly by appointment only. Contact our team to request a personal consultation.
+                            </p>
                         </div>
                     </div>
 
-                    {/* Right Info Column */}
-                    <div className="flex-1 border-t md:border-t-0 md:border-l border-white/10 pt-12 md:pt-0 md:pl-12 flex flex-col justify-between space-y-8">
-                        <div className="space-y-6">
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-luxury-gold shrink-0">
-                                    <Instagram className="w-4 h-4" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">Instagram</p>
-                                    <a href="https://instagram.com/carpediamjewelry" target="_blank" rel="noopener noreferrer" className="text-base text-gray-200 hover:text-luxury-gold transition-colors font-light">
-                                        @carpediamjewelry
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-luxury-gold shrink-0">
-                                    <MapPin className="w-4 h-4" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">Location</p>
-                                    <p className="text-base text-gray-200 font-light">
-                                        Mumbai, India
-                                    </p>
-                                </div>
-                            </div>
+                    {/* Right Contact Details */}
+                    <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-16 pt-4 lg:pt-16 border-t lg:border-t-0 border-luxury-black/10 contact-animate">
+                        
+                        <div className="flex flex-col gap-4">
+                            <span className="text-[9px] uppercase tracking-[0.3em] text-luxury-black/40 font-medium">Email</span>
+                            <a href="mailto:hello@carpediam.in" className="text-base sm:text-lg font-light text-luxury-black hover:text-luxury-gold transition-colors duration-500">
+                                hello@carpediam.in
+                            </a>
                         </div>
 
-                        <div className="text-xs text-gray-500 font-light leading-relaxed pt-6">
-                            Mumbai studio visits are scheduled strictly by appointment only. Contact our team to request a personal consultation.
+                        <div className="flex flex-col gap-4">
+                            <span className="text-[9px] uppercase tracking-[0.3em] text-luxury-black/40 font-medium">Phone / WhatsApp</span>
+                            <a href="tel:+918850157354" className="text-base sm:text-lg font-light text-luxury-black hover:text-luxury-gold transition-colors duration-500">
+                                +91 88501 57354
+                            </a>
                         </div>
+
+                        <div className="flex flex-col gap-4">
+                            <span className="text-[9px] uppercase tracking-[0.3em] text-luxury-black/40 font-medium">Social</span>
+                            <a href="https://instagram.com/carpediamjewelry" target="_blank" rel="noopener noreferrer" className="text-base sm:text-lg font-light text-luxury-black hover:text-luxury-gold transition-colors duration-500">
+                                @carpediamjewelry
+                            </a>
+                        </div>
+
+                        <div className="flex flex-col gap-4">
+                            <span className="text-[9px] uppercase tracking-[0.3em] text-luxury-black/40 font-medium">Headquarters</span>
+                            <p className="text-base sm:text-lg font-light text-luxury-black">
+                                Mumbai, India
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

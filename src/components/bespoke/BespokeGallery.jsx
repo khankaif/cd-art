@@ -2,41 +2,70 @@ import React from 'react';
 
 const BespokeGallery = ({ galleryItems }) => {
     return (
-        <section className="py-16 md:py-36 bg-white border-b border-gray-100">
-            <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-                <div className="text-center md:text-left md:flex justify-between items-end mb-12 md:mb-20 space-y-3 md:space-y-0">
-                    <div>
-                        <span className="inline-block px-3 py-1 rounded-full bg-luxury-gold/10 text-luxury-gold text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
-                            Bespoke Gallery
+        <section className="py-24 md:py-48 bg-luxury-white border-b border-luxury-black/5 overflow-hidden">
+            <div className="container mx-auto px-6 sm:px-12 lg:px-20 max-w-[1600px]">
+                
+                <div className="flex flex-col items-center text-center mb-24 md:mb-32">
+                    <div className="text-reveal flex items-center gap-4 mb-6">
+                        <span className="w-8 h-[1px] bg-luxury-gold"></span>
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-medium">
+                            The Archive
                         </span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-luxury-black">
-                            Handcrafted Legacies.
-                        </h2>
+                        <span className="w-8 h-[1px] bg-luxury-gold"></span>
                     </div>
-                    <p className="text-gray-500 max-w-sm font-light text-sm">
-                        A curated look at customized commissions and precision benchwork processes from the CD. design floor.
-                    </p>
+                    <h2 className="text-reveal text-4xl sm:text-5xl lg:text-7xl font-serif text-luxury-black font-light tracking-tight max-w-3xl">
+                        Handcrafted Legacies.
+                    </h2>
                 </div>
 
-                {/* Staggered Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {galleryItems.map((img, i) => (
-                        <div
-                            key={i}
-                            className={`gallery-item-animate group relative overflow-hidden rounded-[2rem] shadow-md hover:shadow-xl transition-all duration-500 ${img.aspect}`}
-                        >
-                            <img
-                                src={img.src}
-                                alt={img.alt}
-                                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
-                            />
-                            {/* Overlay Content */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/85 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 text-left">
-                                <span className="text-xs font-bold uppercase tracking-widest text-luxury-gold mb-2">{img.tag}</span>
-                                <h4 className="text-xl font-serif text-white font-medium">{img.title}</h4>
+                {/* Asymmetric Editorial Grid */}
+                <div className="grid grid-cols-12 gap-x-6 gap-y-16 md:gap-y-32">
+                    {galleryItems.map((img, i) => {
+                        // Create an alternating, highly asymmetrical masonry feel
+                        let colSpan = "col-span-12 md:col-span-6";
+                        let offset = "";
+                        
+                        if (i % 4 === 0) {
+                            colSpan = "col-span-12 md:col-span-7";
+                            offset = "md:mt-0";
+                        } else if (i % 4 === 1) {
+                            colSpan = "col-span-12 md:col-span-4 md:col-start-9";
+                            offset = "md:mt-24";
+                        } else if (i % 4 === 2) {
+                            colSpan = "col-span-12 md:col-span-5";
+                            offset = "md:mt-12";
+                        } else {
+                            colSpan = "col-span-12 md:col-span-6 md:col-start-7";
+                            offset = "md:-mt-24";
+                        }
+
+                        return (
+                            <div key={i} className={`${colSpan} ${offset}`}>
+                                <div className="living-frame relative w-full p-2 bg-white shadow-xl group">
+                                    <div className={`relative w-full overflow-hidden ${img.aspect}`}>
+                                        <img
+                                            src={img.src}
+                                            alt={img.alt}
+                                            className="w-full h-full object-cover scale-110 transition-transform duration-[2s] group-hover:scale-100"
+                                        />
+                                        <div className="frame-overlay absolute inset-0 bg-luxury-white origin-top z-10"></div>
+                                        
+                                        {/* Cinematic dark hover overlay */}
+                                        <div className="absolute inset-0 bg-luxury-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
+                                    </div>
+                                    
+                                    {/* Gold frame border */}
+                                    <div className="absolute inset-0 border border-luxury-gold/20 m-2 pointer-events-none z-20 transition-all duration-700 group-hover:m-4 group-hover:border-luxury-gold/40"></div>
+                                </div>
+                                
+                                {/* Elegant offset caption */}
+                                <div className="text-reveal mt-6 md:ml-4 flex flex-col items-start text-left">
+                                    <span className="text-[9px] uppercase tracking-[0.3em] text-luxury-gold font-medium mb-2">{img.tag}</span>
+                                    <h4 className="text-xl md:text-2xl font-serif text-luxury-black font-light">{img.title}</h4>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

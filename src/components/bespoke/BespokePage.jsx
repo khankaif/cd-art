@@ -26,92 +26,67 @@ const BespokePage = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // 1. Hero Entrance Animations
-            const heroTl = gsap.timeline();
-            heroTl.fromTo(".hero-animate", 
-                { opacity: 0, y: 40, filter: "blur(10px)" },
-                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 }
-            );
-
-            // 2. Hero Background Parallax
-            gsap.to(heroBgRef.current, {
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: true,
-                },
-                y: 120,
-                scale: 1.05
-            });
-
-            // 3. Section Reveal Animators (ScrollTriggered)
-            const revealSelectors = [
-                ".editorial-text-animate",
-                ".editorial-image-animate",
-                ".gallery-item-animate",
-                ".philosophy-card-animate",
-                ".timeline-node-animate",
-                ".timeline-card-animate",
-                ".cta-content-animate",
-                ".contact-card-animate"
-            ];
-
-            revealSelectors.forEach((selector) => {
-                gsap.utils.toArray(selector).forEach((el) => {
-                    gsap.fromTo(el,
-                        { opacity: 0, y: 50, filter: "blur(6px)" },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            filter: "blur(0px)",
-                            duration: 1.2,
-                            ease: "power2.out",
-                            scrollTrigger: {
-                                trigger: el,
-                                start: "top 85%",
-                                toggleActions: "play none none none"
-                            }
-                        }
-                    );
-                });
-            });
-
-            // 4. Parallax scroll effect for editorial full-bleed background images
-            gsap.utils.toArray(".editorial-parallax-bg").forEach((bg) => {
-                gsap.to(bg, {
-                    scrollTrigger: {
-                        trigger: bg.parentElement,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: true
-                    },
-                    y: 80
-                });
-            });
-
-            // 5. Image Zoom-on-scroll for grid images
-            gsap.utils.toArray(".scroll-zoom-img").forEach((img) => {
-                gsap.fromTo(img,
-                    { scale: 1.0 },
+            // General text reveal
+            gsap.utils.toArray(".text-reveal").forEach((el) => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 40 },
                     {
-                        scale: 1.08,
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.2,
+                        ease: "power2.out",
                         scrollTrigger: {
-                            trigger: img,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: true
+                            trigger: el,
+                            start: "top 85%",
                         }
                     }
                 );
             });
 
+            // Living Editorial Frames - Image Reveal
+            gsap.utils.toArray(".living-frame").forEach((frame) => {
+                const img = frame.querySelector("img");
+                const overlay = frame.querySelector(".frame-overlay");
+                
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: frame,
+                        start: "top 80%",
+                    }
+                });
+
+                // Mask unreveal
+                if (overlay) {
+                    tl.to(overlay, { height: 0, duration: 1.5, ease: "power3.inOut" });
+                }
+
+                // Image scale down slightly
+                if (img) {
+                    tl.fromTo(img, 
+                        { scale: 1.2 }, 
+                        { scale: 1, duration: 2, ease: "power2.out" },
+                        "-=1.2"
+                    );
+                }
+            });
+
+            // Parallax backgrounds for editorial
+            gsap.utils.toArray(".editorial-parallax-bg").forEach((bg) => {
+                gsap.to(bg, {
+                    yPercent: 15,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: bg.parentElement,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            });
+
         }, pageRef);
 
-        return () => {
-            ctx.revert();
-            ScrollTrigger.refresh();
-        };
+        return () => ctx.revert();
     }, []);
 
     // Scroll to section helper

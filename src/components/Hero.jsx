@@ -13,116 +13,111 @@ const Hero = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Initial animation states for elegant masking
+            gsap.set(".hero-eyebrow", { opacity: 0, y: 20 });
+            gsap.set(".hero-title-word", { yPercent: 110, rotateX: -15, transformOrigin: "0% 100%" });
+            gsap.set(".hero-subtitle", { opacity: 0, y: 30 });
+            gsap.set(".hero-cta", { opacity: 0, y: 30 });
+            gsap.set(".hero-scroll-indicator", { opacity: 0, x: -20 });
 
-            // Initial animation states
-            gsap.set(".hero-eyebrow", { opacity: 0, y: 15 });
-            gsap.set(".hero-title-line", { yPercent: 100 });
-            gsap.set(".hero-subtitle", { opacity: 0, y: 20 });
-            gsap.set(".hero-cta", { opacity: 0, y: 20 });
-            gsap.set(".hero-scroll-indicator", { opacity: 0, y: 15 });
-
-            // Background cinematic entrance
+            // Background cinematic slow-zoom entrance
             gsap.fromTo(
                 bgRef.current,
-                { scale: 1.1, opacity: 0 },
+                { scale: 1.15, filter: "brightness(0.8) contrast(1.1)" },
                 {
                     scale: 1.05,
-                    opacity: 1,
-                    duration: 3,
-                    ease: "power2.out"
+                    filter: "brightness(1) contrast(1)",
+                    duration: 4,
+                    ease: "power3.out"
                 }
             );
 
-            // Hero content reveal timeline (calm and elegant transitions)
-            const tl = gsap.timeline();
+            // Cinematic typographic reveal
+            const tl = gsap.timeline({ delay: 0.2 });
 
             tl.to(".hero-eyebrow", {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
-                ease: "power2.out"
-            }, 0.3)
+                duration: 1.5,
+                ease: "power3.out"
+            }, 0)
+            .to(".hero-title-word", {
+                yPercent: 0,
+                rotateX: 0,
+                duration: 1.8,
+                stagger: 0.15,
+                ease: "power4.out"
+            }, 0.2)
+            .to(".hero-subtitle", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            }, 0.8)
+            .to(".hero-cta", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            }, 1)
+            .to(".hero-scroll-indicator", {
+                opacity: 1,
+                x: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            }, 1.2);
 
-                .to(".hero-title-line", {
-                    yPercent: 0,
-                    duration: 1.4,
-                    stagger: 0.18,
-                    ease: "power3.out"
-                }, 0.5)
-
-                .to(".hero-subtitle", {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.2,
-                    ease: "power2.out"
-                }, 1.1)
-
-                .to(".hero-cta", {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.2,
-                    ease: "power2.out"
-                }, 1.3)
-
-                .to(".hero-scroll-indicator", {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.2,
-                    ease: "power2.out"
-                }, 1.5);
-
-            // Gentle parallax scroll on background image
+            // Subtle parallax scroll on background
             if (bgRef.current) {
-                gsap.fromTo(bgRef.current,
-                    { yPercent: -4 },
-                    {
-                        yPercent: 4,
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: heroRef.current,
-                            start: "top top",
-                            end: "bottom top",
-                            scrub: true
-                        }
+                gsap.to(bgRef.current, {
+                    yPercent: 8,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
                     }
-                );
+                });
             }
 
-            // Button hover animation (solid dark button styling)
+            // Button hover effect (Outlined to fill / magnetic feel)
             const button = btnRef.current;
-
             if (button) {
                 button.addEventListener("mouseenter", () => {
                     gsap.to(button, {
-                        scale: 1.02,
-                        backgroundColor: "#2c2a27",
-                        duration: 0.4,
-                        ease: "power2.out"
+                        backgroundColor: "#c5a059", // luxury-gold
+                        color: "#0a0a0a", // luxury-black
+                        borderColor: "#c5a059",
+                        scale: 1.03,
+                        duration: 0.5,
+                        ease: "power3.out"
                     });
                 });
 
                 button.addEventListener("mouseleave", () => {
                     gsap.to(button, {
+                        backgroundColor: "transparent",
+                        color: "#faf9f6", // luxury-white
+                        borderColor: "rgba(250, 249, 246, 0.4)",
                         scale: 1,
-                        backgroundColor: "#0a0a0a",
-                        duration: 0.4,
-                        ease: "power2.out"
+                        duration: 0.5,
+                        ease: "power3.out"
                     });
                 });
             }
 
-            // Scroll indicator vertical line animation
+            // Elegant horizontal scroll indicator animation
             const indicator = indicatorRef.current;
-
             if (indicator) {
                 gsap.fromTo(
                     indicator,
-                    { y: "-100%" },
+                    { x: "-100%" },
                     {
-                        y: "200%",
-                        duration: 2,
+                        x: "100%",
+                        duration: 2.5,
                         repeat: -1,
-                        ease: "power2.inOut"
+                        ease: "power1.inOut"
                     }
                 );
             }
@@ -130,97 +125,89 @@ const Hero = () => {
         }, heroRef);
 
         return () => ctx.revert();
-
     }, []);
 
     const handleScrollDown = () => {
         const target = document.getElementById('services-anchor');
-
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
     return (
         <section
             ref={heroRef}
-            className="relative min-h-[85svh] md:min-h-[100svh] w-full overflow-hidden bg-[#e4dfd5] border-b border-gray-200/50 flex flex-col justify-center items-center pt-24 md:pt-28 pb-16 md:pb-24"
+            className="relative min-h-[100dvh] w-full overflow-hidden bg-luxury-black flex flex-col justify-center items-start"
         >
-            <div className="absolute inset-0 z-0 overflow-hidden">
+            {/* Cinematic Image Background */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <div
                     ref={bgRef}
-                    className="absolute inset-0 w-full h-[120%] bg-cover bg-[position:68%_center] sm:bg-[position:65%_center] md:bg-[position:60%_center] lg:bg-center origin-center will-change-transform"
-                    style={{
-                        backgroundImage: `url(${luxuryBg})`
-                    }}
+                    className="absolute inset-0 w-full h-[110%] bg-cover bg-[position:68%_center] sm:bg-[position:65%_center] md:bg-[position:60%_center] lg:bg-[position:70%_center] origin-center will-change-transform"
+                    style={{ backgroundImage: `url(${luxuryBg})` }}
                 ></div>
-                {/* Subtle overlay to preserve dark text readability */}
-                <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                {/* Dramatic Editorial Gradient: Darkens the left side for perfect text legibility while keeping the right bright */}
+                <div className="absolute inset-0 bg-gradient-to-r from-luxury-black/90 via-luxury-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/80 via-transparent to-transparent opacity-60"></div>
             </div>
 
-            {/* Hero Content */}
-            <div className="relative z-10 w-full flex flex-col items-center px-6 sm:px-12 lg:px-20 max-w-5xl mx-auto text-center">
-                <div className="max-w-4xl text-center flex flex-col items-center">
+            {/* High-End Editorial Content */}
+            <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 max-w-[1600px] mx-auto mt-20 md:mt-0">
+                <div className="max-w-2xl lg:max-w-4xl flex flex-col items-start">
+                    
                     {/* Eyebrow */}
-                    <span className="hero-eyebrow text-[10px] sm:text-xs uppercase tracking-[0.45em] text-[#9e8060] font-semibold mb-6 block">
-                        CD. FINE ARTISTRY
-                    </span>
+                    <div className="hero-eyebrow flex items-center gap-4 mb-6 md:mb-10">
+                        <span className="w-8 h-[1px] bg-luxury-gold"></span>
+                        <span className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.35em] text-luxury-gold font-medium">
+                            CD. Fine Artistry
+                        </span>
+                    </div>
 
-                    {/* Heading */}
-                    <h1 className="hero-title text-4xl sm:text-6xl md:text-8xl lg:text-8xl xl:text-9xl font-serif text-white tracking-tight leading-[1.05] mb-6 md:mb-8 font-light">
-                        <div className="overflow-hidden py-6">
-                            <span className="block hero-title-line">
+                    {/* Dramatic Typography */}
+                    <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9rem] font-serif text-luxury-white tracking-tighter leading-[0.95] mb-8 font-light perspective-1000">
+                        <div className="overflow-hidden pb-2">
+                            <span className="block hero-title-word text-luxury-white">
                                 Fine Jewelry,
                             </span>
                         </div>
-                        <div className="overflow-hidden py-2 ">
-                            <span className="italic font-light text-white block hero-title-line">
+                        <div className="overflow-hidden pb-4">
+                            <span className="block hero-title-word italic text-luxury-gold font-light opacity-90 pr-4">
                                 Simplified.
                             </span>
                         </div>
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="hero-subtitle text-xs sm:text-sm md:text-base text-white font-medium max-w-[280px] sm:max-w-md md:max-w-lg mx-auto leading-relaxed tracking-wide mb-8 md:mb-10 drop-shadow-lg">
-                        The digital infrastructure for modern jewelry brands.
-                        <br className="hidden sm:block" />
-                        From design to delivery, we power your growth.
+                    <p className="hero-subtitle text-sm sm:text-base md:text-lg text-luxury-white/80 font-light max-w-md lg:max-w-lg leading-[1.8] tracking-wide mb-12">
+                        The digital infrastructure for modern jewelry brands. From exclusive design conceptualization to global delivery, we power your sophisticated growth.
                     </p>
 
-                    {/* CTA */}
+                    {/* CTA Button */}
                     <div className="hero-cta">
                         <button
                             ref={btnRef}
-                            className="hero-cta-btn px-8 py-3.5 rounded-full bg-[#0a0a0a] text-white border border-[#0a0a0a] font-medium text-[10px] sm:text-xs tracking-[0.2em] uppercase transition-all duration-300 select-none cursor-pointer shadow-md hover:shadow-lg"
-                            onClick={() =>
-                                window.open(
-                                    "https://catalog.carpediam.in/",
-                                    "_blank"
-                                )
-                            }
+                            className="px-8 py-4 sm:px-10 sm:py-5 border border-luxury-white/40 bg-transparent text-luxury-white font-medium text-[10px] sm:text-[11px] tracking-[0.25em] uppercase cursor-pointer backdrop-blur-sm"
+                            onClick={() => window.open("https://catalog.carpediam.in/", "_blank")}
                         >
                             View Catalogue
                         </button>
                     </div>
+                </div>
+            </div>
 
-                    {/* Scroll Indicator */}
+            {/* Scroll Indicator */}
+            <div
+                className="hero-scroll-indicator absolute bottom-8 sm:bottom-12 left-6 sm:left-12 lg:left-20 flex flex-row items-center cursor-pointer group pointer-events-auto"
+                onClick={handleScrollDown}
+            >
+                <span className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-luxury-white/70 font-light mr-6 transition-colors duration-500 group-hover:text-luxury-white">
+                    Discover
+                </span>
+                <div className="w-16 sm:w-24 h-[1px] bg-luxury-white/20 relative overflow-hidden">
                     <div
-                        className="hero-scroll-indicator flex flex-col items-center cursor-pointer pointer-events-auto group px-6 py-3 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 mt-8 md:mt-12"
-                        onClick={handleScrollDown}
-                    >
-                        <span className="text-[14px] tracking-[0.4em] uppercase text-black font-black mb-2.5 transition-colors duration-300">
-                            Explore
-                        </span>
-
-                        <div className="w-[1.5px] h-8 bg-red-700 relative overflow-hidden rounded-full">
-                            <div
-                                ref={indicatorRef}
-                                className="absolute top-0 left-0 w-full h-1/2 bg-luxury-gold"
-                            ></div>
-                        </div>
-                    </div>
+                        ref={indicatorRef}
+                        className="absolute top-0 left-0 h-full w-full bg-luxury-white"
+                    ></div>
                 </div>
             </div>
         </section>

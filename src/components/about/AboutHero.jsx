@@ -6,59 +6,140 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutHero = () => {
     const heroRef = useRef(null);
-    const heroBgRef = useRef(null);
-    const heroTitleRef = useRef(null);
-    const heroDescRef = useRef(null);
+    const bgRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Hero Intro Parallax
-            gsap.to(heroBgRef.current, {
+            // Initial states
+            gsap.set(".about-hero-line", { yPercent: 120, rotateX: -10, opacity: 0 });
+            gsap.set(".about-hero-eyebrow", { opacity: 0, y: 20 });
+            gsap.set(".about-hero-desc", { opacity: 0, y: 30 });
+            gsap.set(".about-hero-indicator", { opacity: 0, scale: 0.8 });
+
+            // Background cinematic entrance
+            gsap.fromTo(
+                bgRef.current,
+                { scale: 1.15, filter: "brightness(0.7) contrast(1.1)" },
+                {
+                    scale: 1.05,
+                    filter: "brightness(0.9) contrast(1)",
+                    duration: 4,
+                    ease: "power3.out"
+                }
+            );
+
+            // Editorial Typographic Reveal
+            const tl = gsap.timeline({ delay: 0.3 });
+
+            tl.to(".about-hero-eyebrow", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            }, 0)
+            .to(".about-hero-line", {
+                yPercent: 0,
+                rotateX: 0,
+                opacity: 1,
+                duration: 1.6,
+                stagger: 0.15,
+                ease: "power4.out"
+            }, 0.2)
+            .to(".about-hero-desc", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            }, 0.8)
+            .to(".about-hero-indicator", {
+                opacity: 1,
+                scale: 1,
+                duration: 2,
+                ease: "power3.out"
+            }, 1.2);
+
+            // Parallax scroll effect
+            gsap.to(bgRef.current, {
+                yPercent: 15,
+                ease: "none",
                 scrollTrigger: {
                     trigger: heroRef.current,
                     start: "top top",
                     end: "bottom top",
                     scrub: true,
-                },
-                y: 150,
-                scale: 1.1,
+                }
             });
-
-            // Hero Content Reveal
-            const tl = gsap.timeline();
-            tl.fromTo([heroTitleRef.current, heroDescRef.current],
-                { y: 50, opacity: 0, filter: "blur(10px)" },
-                { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.1 }
-            );
         }, heroRef);
 
         return () => ctx.revert();
     }, []);
 
     return (
-        <div ref={heroRef} className="relative min-h-[110svh] w-full flex flex-col justify-center items-center overflow-hidden bg-gray-50 border-b border-gray-100 pt-28 pb-24">
-            <div ref={heroBgRef} className="absolute inset-0 z-0">
+        <section 
+            ref={heroRef} 
+            className="relative min-h-[100dvh] w-full flex flex-col justify-center items-start overflow-hidden bg-luxury-black"
+        >
+            {/* Cinematic Background */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <div
-                    className="w-full h-full bg-cover bg-center"
+                    ref={bgRef}
+                    className="absolute inset-0 w-full h-[120%] bg-cover bg-[position:40%_center] lg:bg-center origin-center will-change-transform"
                     style={{ backgroundImage: `url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=2574&auto=format&fit=crop')` }}
-                >
+                ></div>
+                {/* Dramatic Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-luxury-black/95 via-luxury-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/90 via-transparent to-transparent opacity-80"></div>
+            </div>
 
+            {/* Editorial Content */}
+            <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 max-w-[1600px] mx-auto mt-20 md:mt-0">
+                <div className="max-w-3xl lg:max-w-4xl flex flex-col items-start">
+                    
+                    {/* Eyebrow */}
+                    <div className="about-hero-eyebrow flex items-center gap-4 mb-8 md:mb-12">
+                        <span className="w-8 h-[1px] bg-luxury-gold"></span>
+                        <span className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.4em] text-luxury-gold font-medium">
+                            Who We Are
+                        </span>
+                    </div>
+
+                    {/* Dramatic Typography */}
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7.5rem] font-serif text-luxury-white tracking-tighter leading-[0.95] mb-10 font-light perspective-1000">
+                        <div className="overflow-hidden pb-2">
+                            <span className="block about-hero-line text-luxury-white">
+                                The intersection of
+                            </span>
+                        </div>
+                        <div className="overflow-hidden pb-4">
+                            <span className="block about-hero-line italic text-luxury-gold font-light opacity-90 pr-4">
+                                tradition & technology.
+                            </span>
+                        </div>
+                    </h1>
+
+                    {/* Subtitle */}
+                    <p className="about-hero-desc text-sm sm:text-base md:text-lg text-luxury-white/80 font-light max-w-md lg:max-w-xl leading-[1.8] tracking-wide border-l border-luxury-gold/30 pl-6 ml-2">
+                        We build the digital architecture that empowers modern jewelry designers. By bridging artisanal handcrafting techniques with automated manufacturing frameworks, we redefine high-end curation.
+                    </p>
                 </div>
             </div>
 
-            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex flex-col items-center">
-                <span className="inline-block px-3 py-1 rounded-full bg-[#D4AF37] text-white text-xs font-bold uppercase tracking-widest mb-6">
-                    Who We Are
-                </span>
-                <h1 ref={heroTitleRef} className="text-5xl md:text-7xl font-serif text-white tracking-tight leading-[1.1] mb-8">
-                    The intersection of<br />
-                    <span className="italic font-light text-white/100 block mt-2 font-serif">tradition & technology.</span>
-                </h1>
-                <p ref={heroDescRef} className="text-base md:text-lg text-white font-normal max-w-2xl mx-auto leading-relaxed">
-                    We build the digital architecture that empowers modern jewelry designers. By bridging artisanal handcrafting techniques with automated manufacturing frameworks, we redefine high-end curation.
-                </p>
+            {/* Scroll Indicator */}
+            <div className="about-hero-indicator absolute bottom-12 left-6 sm:left-12 lg:left-20 flex flex-col items-center">
+                <div className="w-[1px] h-16 sm:h-24 bg-luxury-white/20 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1/2 bg-luxury-gold animate-[slideDown_2s_ease-in-out_infinite]"></div>
+                </div>
             </div>
-        </div>
+
+            {/* Inline keyframes for indicator */}
+            <style jsx="true">{`
+                @keyframes slideDown {
+                    0% { transform: translateY(-100%); }
+                    50% { transform: translateY(100%); }
+                    100% { transform: translateY(200%); }
+                }
+            `}</style>
+        </section>
     );
 };
 
