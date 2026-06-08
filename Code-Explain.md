@@ -44,3 +44,4 @@ This cleans up the timer if the user quickly navigates to another page before th
 
 - return null; 
 Because this component only performs background operations, it doesn't render any visible HTML.
+
