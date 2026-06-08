@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DigitalCTA = ({ parallaxBgRef }) => {
+const DigitalLuxuryFuture = ({ parallaxBgRef }) => {
     return (
         <section className="de-parallax-trigger relative py-48 md:py-64 overflow-hidden flex items-center justify-center">
             <div className="absolute inset-0 z-0">
@@ -31,4 +31,4 @@ const DigitalCTA = ({ parallaxBgRef }) => {
     );
 };
 
-export default DigitalCTA;
+export default DigitalLuxuryFuture;

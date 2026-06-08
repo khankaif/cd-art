@@ -4,7 +4,6 @@ import AboutStory from './about/AboutStory';
 import AboutPhilosophy from './about/AboutPhilosophy';
 import AboutGallery from './about/AboutGallery';
 import AboutCTA from './about/AboutCTA';
-// import AboutContact from './about/AboutContact';
 
 const About = () => {
     return (

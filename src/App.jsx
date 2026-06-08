@@ -88,7 +88,6 @@ function App() {
           <Route path="/our-story" element={<OurStoryPage />} />
           <Route path="/bespoke" element={<BespokePage />} />
           <Route path="/precision-manufacturing" element={<PrecisionManufacturingPage />} />
-          <Route path="/digital-ecosystems" element={<IntegratedDigitalEcosystemsPage />} />
           <Route path="/integrated-digital-ecosystems" element={<IntegratedDigitalEcosystemsPage />} />
         </Routes>
       </main>

@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-    Sparkles, 
-    Compass, 
-    Gem, 
-    Lightbulb 
+import {
+    Sparkles,
+    Compass,
+    Gem,
+    Lightbulb
 } from 'lucide-react';
 
 import BespokeHero from './BespokeHero';
@@ -28,7 +28,7 @@ const BespokePage = () => {
         const ctx = gsap.context(() => {
             // 1. Hero Entrance Animations
             const heroTl = gsap.timeline();
-            heroTl.fromTo(".hero-animate", 
+            heroTl.fromTo(".hero-animate",
                 { opacity: 0, y: 40, filter: "blur(10px)" },
                 { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 }
             );
@@ -90,21 +90,7 @@ const BespokePage = () => {
                 });
             });
 
-            // 5. Image Zoom-on-scroll for grid images
-            gsap.utils.toArray(".scroll-zoom-img").forEach((img) => {
-                gsap.fromTo(img,
-                    { scale: 1.0 },
-                    {
-                        scale: 1.08,
-                        scrollTrigger: {
-                            trigger: img,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: true
-                        }
-                    }
-                );
-            });
+
 
         }, pageRef);
 
@@ -207,31 +193,25 @@ const BespokePage = () => {
         }
     ];
 
-    // Form submission helper
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        alert("Thank you! Your bespoke consultation request has been received. Our directors will reach out to you within 24 hours.");
-        e.target.reset();
-    };
 
     return (
         <div ref={pageRef} className="bg-[#FAF9F6] text-luxury-black font-sans overflow-x-hidden selection:bg-luxury-gold selection:text-white">
-            <BespokeHero 
-                heroRef={heroRef} 
-                heroBgRef={heroBgRef} 
-                scrollToSection={scrollToSection} 
+            <BespokeHero
+                heroRef={heroRef}
+                heroBgRef={heroBgRef}
+                scrollToSection={scrollToSection}
             />
-            <BespokeEditorial 
-                scrollToSection={scrollToSection} 
+            <BespokeEditorial
+                scrollToSection={scrollToSection}
             />
-            <BespokeGallery 
-                galleryItems={galleryItems} 
+            <BespokeGallery
+                galleryItems={galleryItems}
             />
-            <BespokePhilosophy 
-                philosophies={philosophies} 
+            <BespokePhilosophy
+                philosophies={philosophies}
             />
-            <BespokeTimeline 
-                timelineSteps={timelineSteps} 
+            <BespokeTimeline
+                timelineSteps={timelineSteps}
             />
 
         </div>
