@@ -86,6 +86,14 @@ const Navbar = () => {
                 {/* Navigation Links (Right-aligned, hidden on smallest screens to prevent overlap) */}
                 <div className="hidden sm:flex items-center gap-4 sm:gap-6 md:gap-8 justify-end">
                     <a
+                        href="/designprocess"
+                        onClick={(e) => handleNavClick(e, '/designprocess', false)}
+                        className={`${linkBaseClass} ${location.pathname === '/designprocess' ? activeClass : inactiveClass}`}
+                    >
+                        Process
+                    </a>
+
+                    <a
                         href="https://catalog.carpediam.in/"
                         onClick={(e) => handleNavClick(e, 'https://catalog.carpediam.in/', true)}
                         className={`${linkBaseClass} ${inactiveClass}`}
@@ -107,8 +115,8 @@ const Navbar = () => {
                         Contact
                     </a>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     );
 };
 
