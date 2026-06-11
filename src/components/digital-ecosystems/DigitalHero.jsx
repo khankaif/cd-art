@@ -6,14 +6,8 @@ const DigitalHero = ({ heroRef, heroBgRef, scrollToSection }) => {
 
     return (
         <section ref={heroRef} className="relative min-h-[80vh] md:h-screen min-h-[450px] md:min-h-[100svh] w-full flex flex-col justify-center items-center overflow-hidden bg-luxury-black pt-24 md:pt-28 pb-16 md:pb-24">
-            {/* Deep background image with luxury grid and node overlay */}
-            <div ref={heroBgRef} className="absolute inset-0 z-0">
-                <div
-                    className="w-full h-[125%] bg-cover bg-center absolute top-0 left-0 opacity-60"
-                    style={{ backgroundImage: `url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2500')` }}
-                >
-                    <div className="absolute inset-0 bg-black/30"></div>
-                </div>
+            {/* Deep background with luxury grid and node overlay */}
+            <div ref={heroBgRef} className="absolute inset-0 z-0 bg-luxury-black">
                 {/* Glowing Grid Overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
                 {/* Subtle glow nodes */}

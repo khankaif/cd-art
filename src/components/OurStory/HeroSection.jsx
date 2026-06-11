@@ -3,19 +3,9 @@ import React from 'react';
 const HeroSection = ({ heroRef, heroBgRef }) => {
     return (
         <section ref={heroRef} className="relative h-[80vh] md:h-[90vh] min-h-[450px] md:min-h-[600px] w-full flex flex-col justify-center items-center overflow-hidden border-b border-gray-100">
-            {/* Background Parallax Image */}
-            <div className="absolute inset-0 z-0">
-                <div
-                    ref={heroBgRef}
-                    className="w-full h-[120%] bg-cover bg-center absolute top-0 left-0"
-                    style={{
-                        backgroundImage: `url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2574')`,
-                    }}
-                >
-                    {/* Soft overlays to create a warm luxurious atmosphere */}
-                    <div className="absolute inset-0 bg-[#FAF9F6]/65 backdrop-blur-[1px]"></div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/20 via-transparent to-[#FAF9F6]"></div>
-                </div>
+            {/* Architectural Light Background */}
+            <div className="absolute inset-0 z-0 bg-luxury-champagne">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)]" style={{ backgroundSize: '24px 24px' }}></div>
             </div>
 
             <div className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center">

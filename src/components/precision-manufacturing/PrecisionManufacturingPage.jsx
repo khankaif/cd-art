@@ -42,8 +42,8 @@ const PrecisionManufacturingPage = () => {
             // 1. Hero Entrance — staggered blur-to-clear fade-up
             const heroTl = gsap.timeline();
             heroTl.fromTo(".pm-hero-animate",
-                { opacity: 0, y: 40, filter: "blur(10px)" },
-                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 }
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 }
             );
 
             // 2. Hero Background Parallax
@@ -75,11 +75,10 @@ const PrecisionManufacturingPage = () => {
             revealSelectors.forEach((selector) => {
                 gsap.utils.toArray(selector).forEach((el) => {
                     gsap.fromTo(el,
-                        { opacity: 0, y: 50, filter: "blur(6px)" },
+                        { opacity: 0, y: 50 },
                         {
                             opacity: 1,
                             y: 0,
-                            filter: "blur(0px)",
                             duration: 1.2,
                             ease: "power2.out",
                             scrollTrigger: {

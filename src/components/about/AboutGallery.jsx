@@ -18,11 +18,10 @@ const AboutGallery = () => {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.fromTo(".gallery-item",
-                { scale: 0.95, opacity: 0, filter: "blur(5px)" },
+                { scale: 0.95, opacity: 0 },
                 {
                     scale: 1,
                     opacity: 1,
-                    filter: "blur(0px)",
                     duration: 1.2,
                     stagger: 0.1,
                     ease: "power2.out",

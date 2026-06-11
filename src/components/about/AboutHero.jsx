@@ -79,16 +79,9 @@ const AboutHero = () => {
             ref={heroRef} 
             className="relative min-h-[100dvh] w-full flex flex-col justify-center items-start overflow-hidden bg-luxury-black"
         >
-            {/* Cinematic Background */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                <div
-                    ref={bgRef}
-                    className="absolute inset-0 w-full h-[120%] bg-cover bg-[position:40%_center] lg:bg-center origin-center will-change-transform"
-                    style={{ backgroundImage: `url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=2574&auto=format&fit=crop')` }}
-                ></div>
-                {/* Dramatic Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-luxury-black/95 via-luxury-black/60 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/90 via-transparent to-transparent opacity-80"></div>
+            {/* Architectural Dark Background */}
+            <div className="absolute inset-0 z-0 bg-luxury-black">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)]" style={{ backgroundSize: '24px 24px' }}></div>
             </div>
 
             {/* Editorial Content */}

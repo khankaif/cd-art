@@ -3,18 +3,9 @@ import React from 'react';
 const PhilosophySection = ({ philosophyBgRef }) => {
     return (
         <section className="philosophy-trigger relative py-32 md:py-60 overflow-hidden flex items-center justify-center border-b border-gray-100">
-            {/* Full-width Background Image */}
-            <div className="absolute inset-0 z-0">
-                <div 
-                    ref={philosophyBgRef}
-                    className="w-full h-[140%] bg-cover bg-center absolute top-[-20%] left-0"
-                    style={{ 
-                        backgroundImage: `url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000')`,
-                    }}
-                >
-                    {/* Soft overlay for typography readability */}
-                    <div className="absolute inset-0 bg-white/70 backdrop-blur-[1px]"></div>
-                </div>
+            {/* Solid Background */}
+            <div className="absolute inset-0 z-0 bg-luxury-champagne">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)]" style={{ backgroundSize: '24px 24px' }}></div>
             </div>
 
             <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">

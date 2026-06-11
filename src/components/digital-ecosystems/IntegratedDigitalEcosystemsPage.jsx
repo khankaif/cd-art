@@ -40,8 +40,8 @@ const IntegratedDigitalEcosystemsPage = () => {
             // 1. Hero Entrance Animation
             const heroTl = gsap.timeline();
             heroTl.fromTo(".de-hero-animate",
-                { opacity: 0, y: 40, filter: "blur(12px)" },
-                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.4, stagger: 0.15, ease: "power4.out", delay: 0.2 }
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 1.4, stagger: 0.15, ease: "power4.out", delay: 0.2 }
             );
 
             // 2. Hero Background Parallax
@@ -71,11 +71,10 @@ const IntegratedDigitalEcosystemsPage = () => {
             revealSelectors.forEach((selector) => {
                 gsap.utils.toArray(selector).forEach((el) => {
                     gsap.fromTo(el,
-                        { opacity: 0, y: 45, filter: "blur(8px)" },
+                        { opacity: 0, y: 45 },
                         {
                             opacity: 1,
                             y: 0,
-                            filter: "blur(0px)",
                             duration: 1.2,
                             ease: "power3.out",
                             scrollTrigger: {

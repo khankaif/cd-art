@@ -116,26 +116,23 @@ function App() {
         </Routes>
       </main>
 
-      <footer className="bg-luxury-black text-luxury-white pt-16 pb-8 font-sans border-t border-luxury-black">
+      <footer className="bg-luxury-black text-luxury-white pt-24 pb-12 font-sans border-t border-white/5">
         <div className="container mx-auto px-6 sm:px-12 lg:px-20 max-w-[1600px]">
           {/* Main Footer Content */}
           <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24 mb-16">
             
             {/* Branding & Core Navigation */}
             <div className="flex flex-col gap-8 w-full lg:w-auto">
-              <h2 className="text-4xl sm:text-5xl font-serif font-light text-luxury-white tracking-widest uppercase">CD.</h2>
+              <h2 className="text-4xl sm:text-5xl font-serif font-medium text-luxury-white tracking-[0.15em] uppercase">CD.</h2>
               <div className="flex flex-wrap gap-x-8 gap-y-4 max-w-sm">
-                <a href="https://catalog.carpediam.in/" target="_blank" rel="noopener noreferrer" className="relative group text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/60 hover:text-luxury-white transition-colors duration-500">
-                  <span className="relative z-10">Catalogue</span>
-                  <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-gold transition-all duration-500 ease-out group-hover:w-full"></span>
+                <a href="https://catalog.carpediam.in/" target="_blank" rel="noopener noreferrer" className="text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/50 hover:text-luxury-white premium-transition">
+                  Catalogue
                 </a>
-                <Link to="/our-story" className="relative group text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/60 hover:text-luxury-white transition-colors duration-500">
-                  <span className="relative z-10">Our Story</span>
-                  <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-gold transition-all duration-500 ease-out group-hover:w-full"></span>
+                <Link to="/our-story" className="text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/50 hover:text-luxury-white premium-transition">
+                  Our Story
                 </Link>
-                <Link to="/contact" className="relative group text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/60 hover:text-luxury-white transition-colors duration-500">
-                  <span className="relative z-10">Contact</span>
-                  <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-gold transition-all duration-500 ease-out group-hover:w-full"></span>
+                <Link to="/contact" className="text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light text-luxury-white/50 hover:text-luxury-white premium-transition">
+                  Contact
                 </Link>
               </div>
             </div>
@@ -149,19 +146,19 @@ function App() {
                 <div className="flex gap-6 border-b border-white/10 pb-2 relative">
                   <button
                     onClick={() => setActiveOffice('europe')}
-                    className={`text-[9px] uppercase tracking-[0.2em] transition-colors duration-500 cursor-pointer ${activeOffice === 'europe' ? 'text-luxury-white font-medium' : 'text-luxury-white/40 hover:text-luxury-white/80'}`}
+                    className={`text-[9px] uppercase tracking-[0.2em] premium-transition cursor-pointer ${activeOffice === 'europe' ? 'text-luxury-white font-medium' : 'text-luxury-white/40 hover:text-luxury-white'}`}
                   >
                     Europe
                   </button>
                   <button
                     onClick={() => setActiveOffice('india')}
-                    className={`text-[9px] uppercase tracking-[0.2em] transition-colors duration-500 cursor-pointer ${activeOffice === 'india' ? 'text-luxury-white font-medium' : 'text-luxury-white/40 hover:text-luxury-white/80'}`}
+                    className={`text-[9px] uppercase tracking-[0.2em] premium-transition cursor-pointer ${activeOffice === 'india' ? 'text-luxury-white font-medium' : 'text-luxury-white/40 hover:text-luxury-white'}`}
                   >
                     India
                   </button>
                   {/* Animated Tab Indicator */}
                   <div 
-                    className="absolute bottom-[-1px] h-[1px] bg-luxury-gold transition-all duration-500 ease-in-out"
+                    className="absolute bottom-[-1px] h-[1px] bg-luxury-white/80 premium-transition"
                     style={{
                       left: activeOffice === 'europe' ? '0' : '52px',
                       width: activeOffice === 'europe' ? '46px' : '36px'
@@ -183,20 +180,18 @@ function App() {
               <div className="space-y-6">
                 <h3 className="text-[9px] font-medium uppercase tracking-[0.3em] text-luxury-gold">Connect</h3>
                 <div className="flex flex-col gap-4 pt-1">
-                  <a href="mailto:hello@carpediam.in" className="text-xs text-luxury-white/50 hover:text-luxury-gold transition-colors duration-500 font-light tracking-wide">
+                  <a href="mailto:hello@carpediam.in" className="text-xs text-luxury-white/50 hover:text-luxury-white premium-transition font-light tracking-wide">
                     hello@carpediam.in
                   </a>
-                  <a href="tel:+918850157354" className="text-xs text-luxury-white/50 hover:text-luxury-gold transition-colors duration-500 font-light tracking-wide">
+                  <a href="tel:+918850157354" className="text-xs text-luxury-white/50 hover:text-luxury-white premium-transition font-light tracking-wide">
                     +91 88501 57364
                   </a>
                   <div className="flex gap-5 pt-2">
-                    <a href="https://instagram.com/carpediamjewelry" target="_blank" rel="noopener noreferrer" className="relative group text-[9px] tracking-[0.2em] uppercase text-luxury-white/40 hover:text-luxury-white transition-colors duration-500">
-                      <span className="relative z-10">Instagram</span>
-                      <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
+                    <a href="https://instagram.com/carpediamjewelry" target="_blank" rel="noopener noreferrer" className="text-[9px] tracking-[0.2em] uppercase text-luxury-white/40 hover:text-luxury-white premium-transition">
+                      Instagram
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="relative group text-[9px] tracking-[0.2em] uppercase text-luxury-white/40 hover:text-luxury-white transition-colors duration-500">
-                      <span className="relative z-10">LinkedIn</span>
-                      <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[9px] tracking-[0.2em] uppercase text-luxury-white/40 hover:text-luxury-white premium-transition">
+                      LinkedIn
                     </a>
                   </div>
                 </div>
@@ -210,13 +205,11 @@ function App() {
               © {new Date().getFullYear()} CD. ALL RIGHTS RESERVED.
             </p>
             <div className="flex gap-8">
-              <a href="#" className="relative group text-[9px] sm:text-[10px] text-luxury-white/30 hover:text-luxury-white uppercase tracking-[0.25em] transition-colors duration-500">
-                <span className="relative z-10">Privacy</span>
-                <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
+              <a href="#" className="text-[9px] sm:text-[10px] text-luxury-white/30 hover:text-luxury-white uppercase tracking-[0.25em] premium-transition">
+                Privacy
               </a>
-              <a href="#" className="relative group text-[9px] sm:text-[10px] text-luxury-white/30 hover:text-luxury-white uppercase tracking-[0.25em] transition-colors duration-500">
-                <span className="relative z-10">Terms</span>
-                <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-luxury-white transition-all duration-500 ease-out group-hover:w-full"></span>
+              <a href="#" className="text-[9px] sm:text-[10px] text-luxury-white/30 hover:text-luxury-white uppercase tracking-[0.25em] premium-transition">
+                Terms
               </a>
             </div>
           </div>

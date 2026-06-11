@@ -7,34 +7,19 @@ const BespokeEditorial = ({ scrollToSection }) => {
 
             {/* 2.1 Custom Design Consultation (Asymmetric Layout) */}
             <section className="container mx-auto px-6 sm:px-12 lg:px-20 max-w-[1600px] mb-32 lg:mb-48">
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                    <div className="w-full lg:w-5/12 order-2 lg:order-1">
-                        <div className="text-reveal flex items-center gap-4 mb-8">
-                            <span className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-medium">Phase I</span>
-                            <span className="w-12 h-[1px] bg-luxury-gold"></span>
-                        </div>
-                        <h2 className="text-reveal text-4xl sm:text-5xl lg:text-6xl font-serif leading-[1.1] mb-8 font-light">
-                            The Initial<br />
-                            <span className="italic text-luxury-black/60">Dialogue.</span>
-                        </h2>
-                        <p className="text-reveal text-sm sm:text-base text-luxury-black/60 leading-[1.8] font-light max-w-md border-l border-luxury-gold/30 pl-6">
-                            Every masterpiece begins with an open conversation. We work directly with you to understand the sentimental weight, visual aesthetic, and metal characteristics you desire, sourcing unique stones that complement your personal narrative.
-                        </p>
+                <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+                    <div className="text-reveal flex items-center justify-center gap-4 mb-8">
+                        <span className="w-8 h-[1px] bg-luxury-gold"></span>
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-medium">Phase I</span>
+                        <span className="w-8 h-[1px] bg-luxury-gold"></span>
                     </div>
-                    
-                    <div className="w-full lg:w-7/12 order-1 lg:order-2">
-                        <div className="living-frame relative aspect-[4/3] w-full p-4 bg-white shadow-2xl">
-                            <div className="relative w-full h-full overflow-hidden">
-                                <img
-                                    src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2000"
-                                    alt="Consultation desk"
-                                    className="w-full h-full object-cover scale-110"
-                                />
-                                <div className="frame-overlay absolute inset-0 bg-luxury-white origin-top z-10"></div>
-                            </div>
-                            <div className="absolute inset-0 border border-luxury-gold/20 m-2 pointer-events-none z-20"></div>
-                        </div>
-                    </div>
+                    <h2 className="text-reveal text-4xl sm:text-5xl lg:text-6xl font-serif leading-[1.1] mb-8 font-medium">
+                        The Initial<br />
+                        <span className="italic text-luxury-black/60 font-light">Dialogue.</span>
+                    </h2>
+                    <p className="text-reveal text-sm sm:text-base text-luxury-black/60 leading-[1.8] font-sans">
+                        Every masterpiece begins with an open conversation. We work directly with you to understand the sentimental weight, visual aesthetic, and metal characteristics you desire, sourcing unique stones that complement your personal narrative.
+                    </p>
                 </div>
             </section>
 
@@ -83,12 +68,8 @@ const BespokeEditorial = ({ scrollToSection }) => {
 
             {/* 2.3 CAD & Precision Engineering (Full Bleed Parallax with Floating Frame) */}
             <section className="relative w-full h-[80vh] min-h-[600px] flex items-center overflow-hidden mb-32 lg:mb-48">
-                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                    <div
-                        className="editorial-parallax-bg absolute top-[-10%] left-0 w-full h-[120%] bg-cover bg-center grayscale"
-                        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2000')` }}
-                    />
-                    <div className="absolute inset-0 bg-luxury-black/80" />
+                <div className="absolute inset-0 z-0 bg-luxury-black">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)]" style={{ backgroundSize: '24px 24px' }}></div>
                 </div>
 
                 <div className="container mx-auto px-6 sm:px-12 lg:px-20 max-w-[1600px] relative z-10 flex justify-end">

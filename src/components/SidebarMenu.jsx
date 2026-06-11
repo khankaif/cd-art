@@ -105,12 +105,12 @@ const SidebarMenu = ({ onClose }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="fixed top-0 left-0 h-[100dvh] w-full max-w-[380px] z-50 bg-[#0A0A0A]/95 backdrop-blur-2xl border-r border-white/5 flex flex-col justify-between p-6 sm:p-8 md:p-12 text-white overflow-y-auto select-none pointer-events-auto"
+      className="fixed top-0 left-0 h-[100dvh] w-full max-w-[380px] z-50 bg-luxury-black/95 backdrop-blur-2xl border-r border-white/5 flex flex-col justify-between p-6 sm:p-8 md:p-12 text-luxury-white overflow-y-auto select-none pointer-events-auto"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Subtle radial glow for premium luxury feel */}
       <div 
-        className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(197,160,89,0.06),transparent_65%)] pointer-events-none" 
+        className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(253,251,247,0.03),transparent_65%)] pointer-events-none" 
         aria-hidden="true"
       />
 
@@ -119,7 +119,7 @@ const SidebarMenu = ({ onClose }) => {
         {/* Close Button positioned in top-left of sidebar */}
         <button
           onClick={onClose}
-          className="text-white/60 hover:text-luxury-gold transition-all duration-300 hover:rotate-90 p-3 -m-3 focus:outline-none cursor-pointer"
+          className="text-luxury-white/60 hover:text-luxury-white premium-transition hover:-rotate-90 p-3 -m-3 focus:outline-none cursor-pointer"
           aria-label="Close Menu"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +129,7 @@ const SidebarMenu = ({ onClose }) => {
         </button>
 
         {/* Small branding text in top-right of sidebar */}
-        <div className="text-lg font-serif font-bold text-white tracking-[0.15em]">
+        <div className="text-lg font-serif font-medium text-luxury-white tracking-[0.15em]">
           CD.
         </div>
       </div>
@@ -147,11 +147,11 @@ const SidebarMenu = ({ onClose }) => {
               variants={linkVariants}
               className="relative pl-6"
             >
-              {/* Thin gold active indicator line */}
+              {/* Thin active indicator line */}
               {active && (
                 <motion.span
                   layoutId="activeIndicator"
-                  className="absolute left-0 top-[15%] w-[1.5px] h-[70%] bg-luxury-gold"
+                  className="absolute left-0 top-[15%] w-[1.5px] h-[70%] bg-luxury-white"
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
@@ -159,8 +159,8 @@ const SidebarMenu = ({ onClose }) => {
               <a
                 href={item.path}
                 onClick={(e) => handleItemClick(e, item)}
-                className={`block font-serif text-xl sm:text-2xl md:text-3xl font-light tracking-wide transition-colors duration-300 ${
-                  active ? 'text-luxury-gold' : 'text-white/80 hover:text-luxury-gold'
+                className={`block font-serif text-xl sm:text-2xl md:text-3xl font-light tracking-wide premium-transition ${
+                  active ? 'text-luxury-white font-medium' : 'text-luxury-white/50 hover:text-luxury-white'
                 }`}
               >
                 {item.name}
@@ -171,7 +171,7 @@ const SidebarMenu = ({ onClose }) => {
       </motion.nav>
 
       {/* Minimal copyright footer */}
-      <div className="relative z-10 text-[10px] tracking-[0.3em] uppercase opacity-40 text-white font-sans mt-auto">
+      <div className="relative z-10 text-[10px] tracking-[0.3em] uppercase opacity-40 text-luxury-white font-sans mt-auto">
         © CarpeDiam
       </div>
     </motion.div>

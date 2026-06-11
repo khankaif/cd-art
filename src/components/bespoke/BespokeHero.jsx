@@ -28,13 +28,13 @@ const BespokeHero = ({ scrollToSection }) => {
 
     return (
         <section ref={heroRef} className="relative h-screen min-h-[600px] w-full flex flex-col justify-center items-center overflow-hidden bg-luxury-black text-luxury-white">
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-50">
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-70">
                 <div
                     ref={bgRef}
-                    className="absolute top-[-10%] left-0 w-full h-[120%] bg-cover bg-center origin-center will-change-transform grayscale opacity-70"
+                    className="absolute top-[-10%] left-0 w-full h-[120%] bg-cover bg-center origin-center will-change-transform grayscale opacity-90"
                     style={{ backgroundImage: `url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=2574')` }}
                 ></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/40 to-transparent"></div>
             </div>
 
             <div className="relative z-10 w-full max-w-[1600px] px-6 sm:px-12 lg:px-20 mx-auto flex flex-col items-center md:items-start text-center md:text-left mt-20">

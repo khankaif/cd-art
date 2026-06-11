@@ -25,8 +25,8 @@ const OurStoryPage = () => {
             // 1. Hero Entry Animations
             const heroTl = gsap.timeline();
             heroTl.fromTo(".hero-fade",
-                { opacity: 0, y: 30, filter: "blur(5px)" },
-                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, stagger: 0.15, ease: "power3.out" }
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" }
             );
 
             // 2. Hero Background Parallax
@@ -53,11 +53,10 @@ const OurStoryPage = () => {
             animatedSections.forEach((selector) => {
                 gsap.utils.toArray(selector).forEach((el) => {
                     gsap.fromTo(el,
-                        { opacity: 0, y: 40, filter: "blur(4px)" },
+                        { opacity: 0, y: 40 },
                         {
                             opacity: 1,
                             y: 0,
-                            filter: "blur(0px)",
                             duration: 1,
                             ease: "power2.out",
                             scrollTrigger: {

@@ -4,8 +4,8 @@ import { motion, animate } from 'framer-motion';
 const GalleryCard = ({ item }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 80, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className={`relative overflow-hidden rounded-[2rem] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] group border border-white/10 backdrop-blur-[2px] bg-white/5 transition-shadow duration-500 hover:shadow-[0_25px_60px_-10px_rgba(197,160,89,0.2)] ${item.size}`}

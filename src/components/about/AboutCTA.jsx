@@ -43,14 +43,9 @@ const AboutCTA = () => {
     return (
         <section ref={ctaRef} className="py-32 md:py-48 relative overflow-hidden bg-luxury-black flex justify-center items-center">
             
-            {/* Cinematic Background */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
-                <div
-                    ref={bgRef}
-                    className="absolute inset-0 w-full h-[120%] bg-cover bg-center origin-center will-change-transform grayscale"
-                    style={{ backgroundImage: `url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=2574&auto=format&fit=crop')` }}
-                ></div>
-                <div className="absolute inset-0 bg-luxury-black/80"></div>
+            {/* Typography-led dark background */}
+            <div className="absolute inset-0 z-0 pointer-events-none bg-luxury-black">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)]" style={{ backgroundSize: '24px 24px' }}></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
@@ -72,10 +67,10 @@ const AboutCTA = () => {
                         href="https://catalog.carpediam.in/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative inline-flex items-center justify-center px-10 py-5 border border-luxury-white/30 bg-transparent text-luxury-white text-[10px] sm:text-xs tracking-[0.25em] uppercase transition-all duration-500 overflow-hidden"
+                        className="relative inline-flex items-center justify-center px-10 py-5 border border-luxury-white/30 bg-transparent text-luxury-white text-[10px] sm:text-xs tracking-[0.25em] uppercase premium-transition overflow-hidden group"
                     >
-                        <span className="absolute inset-0 w-full h-full bg-luxury-white transform scale-y-0 origin-bottom transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100"></span>
-                        <span className="relative z-10 transition-colors duration-500 group-hover:text-luxury-black font-medium">View Catalogue</span>
+                        <span className="absolute inset-0 w-full h-full bg-luxury-white transform scale-y-0 origin-bottom premium-transition group-hover:scale-y-100"></span>
+                        <span className="relative z-10 premium-transition group-hover:text-luxury-black font-medium">View Catalogue</span>
                     </a>
                 </div>
             </div>

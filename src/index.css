@@ -1,28 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap');
 
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Geist', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-mono: 'Geist Mono', monospace;
 
-  --color-luxury-black: #0a0a0a;
-  --color-luxury-gold: #c5a059;
-  --color-luxury-white: #faf9f6;
-  --color-luxury-champagne: #f5f4f0;
-  --color-luxury-sand: #efefea;
+  /* Architectural Warm Luxury Palette */
+  --color-luxury-black: #121212;
+  --color-luxury-charcoal: #1c1c1c;
+  --color-luxury-gold: #d6b88a;
+  --color-luxury-white: #fdfbf7;
+  --color-luxury-champagne: #f4f1ea;
+  --color-luxury-sand: #e8e4dc;
+
+  /* Refined Radius System */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
 }
 
 :root {
-  --background-color: #faf9f6;
-  --text-color: #0a0a0a;
+  --background-color: var(--color-luxury-white);
+  --text-color: var(--color-luxury-black);
 }
 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist', sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em; /* Tighter tracking for premium feel */
 }
 
 /* Custom Utilities */
@@ -57,3 +72,16 @@ html {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* Motion & Component Utilities */
+@layer utilities {
+  .premium-transition {
+    transition-duration: 600ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .premium-blur {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}

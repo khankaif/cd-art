@@ -11,11 +11,10 @@ const ContactPage = () => {
         // Entry animation for hero elements
         const ctx = gsap.context(() => {
             gsap.fromTo(".contact-animate",
-                { y: 50, opacity: 0, filter: "blur(8px)" },
+                { y: 50, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
-                    filter: "blur(0px)",
                     duration: 1.2,
                     stagger: 0.15,
                     ease: "power3.out"
@@ -100,11 +99,11 @@ const ContactPage = () => {
             <section id="contact-form-section" ref={formSectionRef} className="relative z-10 px-6 pb-32">
                 <div className="max-w-5xl mx-auto bg-luxury-champagne/95 backdrop-blur-md text-luxury-black rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-white/40 flex flex-col gap-12 lg:gap-16">
 
-                    {/* Upper: Grid of Form + Side Image */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
+                    {/* Upper: Grid of Form (Now full width to be typography-led) */}
+                    <div className="grid grid-cols-1 items-stretch">
 
-                        {/* Left Column: Form */}
-                        <form onSubmit={handleSubmit} className="lg:col-span-7 flex flex-col justify-between space-y-8">
+                        {/* Full Width Form */}
+                        <form onSubmit={handleSubmit} className="flex flex-col justify-between space-y-8 max-w-4xl mx-auto w-full">
                             <div className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Name */}
@@ -185,17 +184,7 @@ const ContactPage = () => {
                             </div>
                         </form>
 
-                        {/* Right Column: Architectural side visual card */}
-                        <div className="lg:col-span-5 hidden lg:block">
-                            <div className="h-full min-h-[380px] w-full rounded-[2rem] overflow-hidden shadow-lg relative group">
-                                <img
-                                    src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop"
-                                    alt="Luxury workspace architecture"
-                                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-luxury-black/5 mix-blend-overlay"></div>
-                            </div>
-                        </div>
+                        {/* Image removed for typography-led layout */}
 
                     </div>
 

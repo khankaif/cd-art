@@ -39,12 +39,12 @@ const HamburgerButton = ({ isOpen, onClick }) => {
     return (
         <button
             onClick={onClick}
-            className={`fixed top-0 left-0 z-50 flex justify-center items-center h-16 sm:h-20 w-16 sm:w-20 lg:w-24 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto cursor-pointer focus:outline-none group ${visibilityClasses}`}
+            className={`fixed top-0 left-0 z-50 flex justify-center items-center h-16 sm:h-20 w-16 sm:w-20 lg:w-24 premium-transition pointer-events-auto cursor-pointer focus:outline-none group ${visibilityClasses}`}
             aria-label="Open Menu"
         >
             <div className="flex flex-col gap-1.5 items-center justify-center w-full">
-                <span className="h-[1px] sm:h-[1.5px] bg-luxury-black transition-all duration-300 ease-out w-5 sm:w-6 group-hover:w-8" />
-                <span className="h-[1px] sm:h-[1.5px] bg-luxury-black transition-all duration-300 ease-out w-8 group-hover:w-5 sm:group-hover:w-6" />
+                <span className="h-[1px] sm:h-[1.5px] bg-luxury-black premium-transition w-5 sm:w-6 group-hover:w-8" />
+                <span className="h-[1px] sm:h-[1.5px] bg-luxury-black premium-transition w-8 group-hover:w-5 sm:group-hover:w-6" />
             </div>
         </button>
     );

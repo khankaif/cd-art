@@ -63,20 +63,20 @@ const Navbar = () => {
     };
 
     // Premium Typography and states for links
-    const linkBaseClass = "relative text-[10px] sm:text-[11px] tracking-[0.25em] uppercase transition-colors duration-500 group py-2";
+    const linkBaseClass = "relative text-[10px] sm:text-[11px] tracking-[0.25em] uppercase premium-transition py-2";
     const activeClass = "text-luxury-black font-medium";
-    const inactiveClass = "text-luxury-black/60 font-light hover:text-luxury-gold";
+    const inactiveClass = "text-luxury-black/50 font-light hover:text-luxury-black";
 
     const navVisibilityClasses = !isMounted
         ? "opacity-0 -translate-y-full"
         : isVisible
-            ? "opacity-85 translate-y-0"
+            ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-full pointer-events-none";
 
     // Sophisticated glassmorphism and height changes on scroll
     const navBackgroundClasses = scrolled
-        ? "bg-luxury-white/95 backdrop-blur-xl border-b border-luxury-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] h-16 sm:h-20"
-        : "bg-luxury-white/90 backdrop-blur-md border-b border-transparent shadow-none h-20 sm:h-24";
+        ? "bg-luxury-white/85 premium-blur border-b border-luxury-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.02)] h-16 sm:h-20"
+        : "bg-transparent border-b border-transparent shadow-none h-20 sm:h-24";
 
     return (
         <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${navVisibilityClasses}`}>
@@ -92,7 +92,7 @@ const Navbar = () => {
                     <a
                         href="/"
                         onClick={handleLogoClick}
-                        className="text-xl sm:text-2xl md:text-3xl font-serif font-normal text-luxury-black tracking-[0.15em] sm:tracking-[0.2em] hover:text-luxury-gold transition-colors duration-500"
+                        className="text-xl sm:text-2xl md:text-3xl font-serif font-medium text-luxury-black tracking-[0.1em] sm:tracking-[0.15em] hover:opacity-70 premium-transition"
                     >
                         CD.
                     </a>
@@ -105,19 +105,16 @@ const Navbar = () => {
                         onClick={(e) => handleNavClick(e, 'https://catalog.carpediam.in/', true)}
                         className={`${linkBaseClass} ${inactiveClass}`}
                     >
-                        <span className="relative z-10">Catalogue</span>
-                        <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-luxury-gold -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                        Catalogue
                     </a>
                     <a
                         href="/our-story"
                         onClick={(e) => handleNavClick(e, '/our-story', false)}
                         className={`${linkBaseClass} ${location.pathname === '/our-story' ? activeClass : inactiveClass}`}
                     >
-                        <span className="relative z-10">Our Story</span>
-                        {location.pathname === '/our-story' ? (
-                            <span className="absolute bottom-0 left-1/2 w-full h-[1px] bg-luxury-black/30 -translate-x-1/2" />
-                        ) : (
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-luxury-gold -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                        Our Story
+                        {location.pathname === '/our-story' && (
+                            <span className="absolute -bottom-1 left-1/2 w-1 h-1 rounded-full bg-luxury-black -translate-x-1/2" />
                         )}
                     </a>
                     <a
@@ -125,11 +122,9 @@ const Navbar = () => {
                         onClick={(e) => handleNavClick(e, '/contact', false)}
                         className={`${linkBaseClass} ${location.pathname === '/contact' ? activeClass : inactiveClass}`}
                     >
-                        <span className="relative z-10">Contact</span>
-                        {location.pathname === '/contact' ? (
-                            <span className="absolute bottom-0 left-1/2 w-full h-[1px] bg-luxury-black/30 -translate-x-1/2" />
-                        ) : (
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-luxury-gold -translate-x-1/2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                        Contact
+                        {location.pathname === '/contact' && (
+                            <span className="absolute -bottom-1 left-1/2 w-1 h-1 rounded-full bg-luxury-black -translate-x-1/2" />
                         )}
                     </a>
                 </div>
