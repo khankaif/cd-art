@@ -6,8 +6,6 @@ const SidebarMenu = ({ onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
-
   const menuItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/#about', isHash: true },

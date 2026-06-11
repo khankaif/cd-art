@@ -24,7 +24,7 @@ const OurStoryPage = () => {
         const ctx = gsap.context(() => {
             // 1. Hero Entry Animations
             const heroTl = gsap.timeline();
-            heroTl.fromTo(".hero-fade", 
+            heroTl.fromTo(".hero-fade",
                 { opacity: 0, y: 30, filter: "blur(5px)" },
                 { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, stagger: 0.15, ease: "power3.out" }
             );
@@ -44,12 +44,10 @@ const OurStoryPage = () => {
             // 3. Section Animators (General Fade-ups)
             const animatedSections = [
                 ".intro-animate",
-                ".grid-item-animate",
                 ".pillar-card-animate",
                 ".journey-animate",
                 ".timeline-item-animate",
-                ".values-block-animate",
-                ".cta-card-animate"
+                ".values-block-animate"
             ];
 
             animatedSections.forEach((selector) => {
@@ -89,8 +87,8 @@ const OurStoryPage = () => {
                 const targetValue = parseInt(stat.getAttribute("data-target"));
                 const isPercent = stat.innerText.includes("%");
                 const isPlus = stat.innerText.includes("+");
-                
-                gsap.fromTo(stat, 
+
+                gsap.fromTo(stat,
                     { textContent: 0 },
                     {
                         textContent: targetValue,
@@ -102,7 +100,7 @@ const OurStoryPage = () => {
                             toggleActions: "play none none none"
                         },
                         snap: { textContent: 1 },
-                        onUpdate: function() {
+                        onUpdate: function () {
                             let val = Math.floor(stat.textContent);
                             stat.innerText = val + (isPercent ? "%" : isPlus ? "+" : "");
                         }

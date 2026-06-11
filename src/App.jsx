@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';  //importing Greensock animation library
 import { ScrollTrigger } from 'gsap/ScrollTrigger'; // importing Scroll animation it allows animation to happen on scroll
 import { Link } from "react-router-dom";
+import Lenis from 'lenis'; // Import Lenis for smooth scrolling
 
 //importing components
 import Navbar from './components/Navbar';
@@ -44,6 +45,29 @@ const ScrollToTop = () => {  //Whenever user changes page automatically goes to 
 function App() {
   const [activeOffice, setActiveOffice] = useState('europe');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Initialize Lenis and sync with GSAP
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      syncTouch: false,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      lenis.destroy();
+    };
+  }, []);
 
   const offices = {
     europe: {
@@ -88,7 +112,6 @@ function App() {
           <Route path="/our-story" element={<OurStoryPage />} />
           <Route path="/bespoke" element={<BespokePage />} />
           <Route path="/precision-manufacturing" element={<PrecisionManufacturingPage />} />
-          <Route path="/digital-ecosystems" element={<IntegratedDigitalEcosystemsPage />} />
           <Route path="/integrated-digital-ecosystems" element={<IntegratedDigitalEcosystemsPage />} />
         </Routes>
       </main>

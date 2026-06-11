@@ -43,4 +43,9 @@ When a new page loads, elements take a few milliseconds to render. This timer wa
 This cleans up the timer if the user quickly navigates to another page before the 100ms is up, preventing errors.
 
 - return null; 
+<<<<<<< HEAD
 Because this component only performs background operations, it doesn't render any visible HTML.
+=======
+Because this component only performs background operations, it doesn't render any visible HTML.
+
+>>>>>>> actual-code

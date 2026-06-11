@@ -14,7 +14,7 @@ const LogoTicker = () => {
     useEffect(() => {
         const track = trackRef.current;
         if (!track) return;
-        
+
         // Single transition width (half of the duplicated list width)
         const halfWidth = track.scrollWidth / 2;
 
